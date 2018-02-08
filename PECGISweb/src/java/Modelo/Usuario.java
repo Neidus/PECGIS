@@ -12,8 +12,10 @@ package Modelo;
 public class Usuario {
     private String nombre; 
     private String password;
-    
-    
+
+    public Usuario() {
+    }
+        
      public String getNombre() {
         return nombre;
     }
