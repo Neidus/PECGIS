@@ -26,9 +26,10 @@ public class LoginUsuario {
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error al conectar ");
             }
-            con =DriverManager.getConnection("jdbc:postgresql://localhost:5432/mbbdda","postgres","19941216");
+            con =DriverManager.getConnection("jdbc:postgresql://localhost:5432/mbbdda","postgres","#");
         } catch (SQLException ex) {
             System.out.println("No se pudo conectar");
         }
     }
+    
 }
