@@ -15,6 +15,10 @@ public class Usuario {
 
     public Usuario() {
     }
+    public Usuario(String nombre, String pass){
+        this.nombre=nombre;
+        this.password=pass;  
+    }
         
      public String getNombre() {
         return nombre;

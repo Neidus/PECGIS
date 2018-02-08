@@ -45,7 +45,9 @@
             <!--<span class="alert">Invalid Credentials</span>-->
             <a class="link" href="#">Lost your password?</a>
             <a class="link" href="#"> Registrese </a>
-            <button type="button" class="log-btn" >Log in</button> 
+            <%
+                out.println("<button type='button' class='log-btn' >Log in</button>"); 
+            %>        
           </div>
         <!-- Llamada a la libreria jquery -->
         <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
