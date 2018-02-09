@@ -16,8 +16,8 @@ public class DAOLogin extends Usuario {
    public DAOLogin(){
        objConecta=new Controladores.LoginUsuario(); 
    }
-   public boolean valide(){
-       String SQL= "Select * from Usuario where usuario='"+super.getNombre()+"' and pass='"+super.getPassword()+"'";
+   public boolean valide(String Nombre, String pass){
+       String SQL= "Select * from usuario where usuario='"+ Nombre +"' and pass='"+ pass +"'";
        if (objConecta.validar(SQL)== false){
            return false;
        }

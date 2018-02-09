@@ -31,7 +31,7 @@
         <div class="login-form">
              <h1>Inicio sesion</h1>
              <section>
-                  <form action="LoginUsuarioServlet" method="POST">
+                  <form action="Proceso.jsp" method="POST">
                         <div class="form-group ">
                            <input name= "user" type="text" class="form-control" placeholder="Username " id="UserName">
                            <i class="fa fa-user"></i>
@@ -40,14 +40,13 @@
                            <input name="pass" type="password" class="form-control" placeholder="Password" id="Passwod">
                            <i class="fa fa-lock"></i>
                        </div>
+                <!--<span class="alert">Invalid Credentials</span>-->
+                      <a class="link" href="#">Lost your password?</a>
+                      <a class="link" href="#"> Registrese </a>
+                      <button type="submit" class='log-btn' >Log in</button> 
                   </form>
              </section>
-            <!--<span class="alert">Invalid Credentials</span>-->
-            <a class="link" href="#">Lost your password?</a>
-            <a class="link" href="#"> Registrese </a>
-            <%
-                out.println("<button type='button' class='log-btn' >Log in</button>"); 
-            %>        
+      
           </div>
         <!-- Llamada a la libreria jquery -->
         <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
