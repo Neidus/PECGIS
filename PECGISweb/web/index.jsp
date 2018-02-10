@@ -42,7 +42,7 @@
                        </div>
                 <!--<span class="alert">Invalid Credentials</span>-->
                       <a class="link" href="#">Lost your password?</a>
-                      <a class="link" href="#"> Registrese </a>
+                      <a class="link" href="Registro.jsp"> Registrese </a>
                       <button type="submit" class='log-btn' >Log in</button> 
                   </form>
              </section>

@@ -13,13 +13,14 @@
     </head>
     <body>
        <%
-           Modelo.DAOLogin obj=new Modelo.DAOLogin(); 
+           Modelo.DAOLogin obj=new Modelo.DAOLogin();
+           RequestDispatcher rd = null;
            String nombre=(String)request.getParameter("user");
            String password=(String)request.getParameter("pass");
            obj.setNombre(nombre);
            obj.setPassword(password);
            if(obj.valide(nombre,password) == false){
-               out.println("NO FUNCIONA"+nombre+","+password);
+               response.sendRedirect("index.html");
            } else{
                out.println("FUNCIONA");
                
