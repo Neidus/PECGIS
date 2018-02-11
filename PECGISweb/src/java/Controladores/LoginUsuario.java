@@ -27,7 +27,7 @@ public class LoginUsuario {
                 System.out.println("Error al conectar ");
             }
             // cadena de conexión, que le dice a postgres los datos para conectarse a la base de datos
-            con =DriverManager.getConnection("jdbc:postgresql://localhost:5432/mbbdda","postgres","#");
+            con =DriverManager.getConnection("jdbc:postgresql://localhost:5432/mbbdda","postgres","19941216");
         } catch (SQLException ex) {
             System.out.println("No se pudo conectar");
         }

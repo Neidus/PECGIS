@@ -31,7 +31,7 @@
         <div class="login-form">
              <h1>Inicio sesion</h1>
              <section>
-                  <form action="Proceso.jsp" method="POST">
+                  <form action="Proceso_InicioSesion.jsp" method="POST">
                         <div class="form-group ">
                            <input name= "user" type="text" class="form-control" placeholder="Username " id="UserName">
                            <i class="fa fa-user"></i>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : Proceso
     Created on : 09-feb-2018, 2:35:11
-    Author     : wolfm
+    Author     : sergio
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +14,7 @@
     <body>
        <%
            Modelo.DAOLogin obj=new Modelo.DAOLogin();
-           RequestDispatcher rd = null;
+           //RequestDispatcher rd = null;
            String nombre=(String)request.getParameter("user");
            String password=(String)request.getParameter("pass");
            obj.setNombre(nombre);

@@ -16,6 +16,16 @@ public class DAOLogin extends Usuario {
    public DAOLogin(){
        objConecta=new Controladores.LoginUsuario(); 
    }
+   public boolean insertar (String Nombre, String pass){
+      if (valide(Nombre,pass)){
+          return false;
+      }
+      else{
+          String SQL="insert into usuario (usuario,pass) values('"+ Nombre +"','"+ pass + "')";
+          objConecta.insertar(SQL); // ejecutamos la sentencia en postgresql
+          return true;
+      }
+   }
    public boolean valide(String Nombre, String pass){
        String SQL= "Select * from usuario where usuario='"+ Nombre +"' and pass='"+ pass +"'";
        if (objConecta.validar(SQL)== false){
