@@ -20,11 +20,11 @@
              <section>
                   <form action="Proceso_Registro.jsp" method="POST">
                         <div class="form-group ">   
-                           <input name= "user" type="text" class="form-control" placeholder="Introduzca su nombre " id="UserName">
+                           <input name= "user" type="text" class="form-control" placeholder="Introduzca su nombre " id="UserName" required>
                            <i class="fa fa-user"></i>
                        </div>
                        <div class="form-group log-status">
-                           <input name="pass" type="password" class="form-control" placeholder="Introduzca una contraseña" id="Passwod">
+                           <input name="pass" type="text" class="form-control" placeholder="Introduzca una contraseña" id="Passwod" required>
                            <i class="fa fa-lock"></i>
                        </div>
                       <button type="submit" class='log-btn' >Registrar</button>

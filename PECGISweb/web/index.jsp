@@ -33,11 +33,11 @@
              <section>
                   <form action="Proceso_InicioSesion.jsp" method="POST">
                         <div class="form-group ">
-                           <input name= "user" type="text" class="form-control" placeholder="Nombre " id="UserName">
+                           <input name= "user" type="text" class="form-control" placeholder="Nombre " id="UserName" required>
                            <i class="fa fa-user"></i>
                        </div>
                        <div class="form-group log-status">
-                           <input name="pass" type="password" class="form-control" placeholder="Contraseña" id="Passwod">
+                           <input name="pass" type="password" class="form-control" placeholder="Contraseña" id="Passwod" required>
                            <i class="fa fa-lock"></i>
                        </div>
                 <!--<span class="alert">Invalid Credentials</span>-->
