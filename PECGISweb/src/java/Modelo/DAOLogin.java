@@ -10,6 +10,9 @@ package Modelo;
  *
  * @author Sergio
  */
+import javax.swing.JOptionPane;
+
+
 public class DAOLogin extends Usuario {
    Controladores.LoginUsuario objConecta; // atributo objeto conectar a la base de datos
    // constructor
@@ -17,7 +20,7 @@ public class DAOLogin extends Usuario {
        objConecta=new Controladores.LoginUsuario(); 
    }
    public boolean insertar (String Nombre, String pass){
-      if (valide(Nombre,pass)){
+      if(Nombre.length()==0 || pass.length()==0){
           return false;
       }
       else{
@@ -26,6 +29,7 @@ public class DAOLogin extends Usuario {
           return true;
       }
    }
+   
    public boolean valide(String Nombre, String pass){
        String SQL= "Select * from usuario where usuario='"+ Nombre +"' and pass='"+ pass +"'";
        if (objConecta.validar(SQL)== false){

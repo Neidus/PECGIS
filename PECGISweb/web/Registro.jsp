@@ -14,12 +14,12 @@
         <link rel="stylesheet" href="diseño\Main.css">
     </head>
     <body>
-
+        
         <div class="login-form">
              <h1>Registro</h1>
              <section>
                   <form action="Proceso_Registro.jsp" method="POST">
-                        <div class="form-group ">
+                        <div class="form-group ">   
                            <input name= "user" type="text" class="form-control" placeholder="Introduzca su nombre " id="UserName">
                            <i class="fa fa-user"></i>
                        </div>
@@ -27,7 +27,9 @@
                            <input name="pass" type="password" class="form-control" placeholder="Introduzca una contraseña" id="Passwod">
                            <i class="fa fa-lock"></i>
                        </div>
-                      <button type="submit" class='log-btn' >Registrar</button> 
+                      <button type="submit" class='log-btn' >Registrar</button>
+                      <input type="button" class="boton" value="<--" onclick="history.go(-1)" />
+                      
                   </form>
              </section>
       

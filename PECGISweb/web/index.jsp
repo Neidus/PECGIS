@@ -33,17 +33,17 @@
              <section>
                   <form action="Proceso_InicioSesion.jsp" method="POST">
                         <div class="form-group ">
-                           <input name= "user" type="text" class="form-control" placeholder="Username " id="UserName">
+                           <input name= "user" type="text" class="form-control" placeholder="Nombre " id="UserName">
                            <i class="fa fa-user"></i>
                        </div>
                        <div class="form-group log-status">
-                           <input name="pass" type="password" class="form-control" placeholder="Password" id="Passwod">
+                           <input name="pass" type="password" class="form-control" placeholder="Contraseña" id="Passwod">
                            <i class="fa fa-lock"></i>
                        </div>
                 <!--<span class="alert">Invalid Credentials</span>-->
-                      <a class="link" href="#">Lost your password?</a>
+                      <a class="link" href="#">Recordar contraseña</a>
                       <a class="link" href="Registro.jsp"> Registrese </a>
-                      <button type="submit" class='log-btn' >Log in</button> 
+                      <button type="submit" class='log-btn' >Iniciar Sesión</button> 
                   </form>
              </section>
       

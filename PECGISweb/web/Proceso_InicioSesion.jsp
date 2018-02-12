@@ -22,7 +22,7 @@
            if(obj.valide(nombre,password) == false){
                response.sendRedirect("index.html");
            } else{
-               out.println("FUNCIONA");
+               response.sendRedirect("new 2.jsp");
                
            }
             
