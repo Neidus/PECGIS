@@ -111,10 +111,22 @@ public class CargarGeoJSON extends HttpServlet {
             set = connection.createStatement();
             rs = set.executeQuery("SELECT ST_AsGeoJSON(geom) FROM geometries;");
              System.out.println("Estoy en service2");
-            while (rs.next())
-            {
-                System.out.println(rs.getString(1));
-            }
+             
+             String objetosGeoJSON=""; 
+             if (rs.next()) {   //Guardamos el conjunto de elementos geométricos en el String
+                                // que será devuelto al jsp
+                 objetosGeoJSON += rs.getString(1) + "\n";
+                 while (rs.next())
+                 {
+                     objetosGeoJSON += "," + rs.getString(1) + "\n";   
+                 }
+                 
+                 System.out.println(objetosGeoJSON);
+             } else {
+                 System.out.println("No hay puntos!!!!"); //La consulta esta vacía de elementos
+                 
+             }
+            //cerramos las conexiones
             rs.close();
             set.close();
         }catch(Exception e){
@@ -122,6 +134,7 @@ public class CargarGeoJSON extends HttpServlet {
         }
         //Mandamos el objeto a la página como respuesta para que lo 
         //pueda representar en la próxima actualización de la página
+        //Para ello usaremos sesiones y mandaremos un atributo de la sesion con el mensaje generado anteriormente.
         res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp"));
     }
 
