@@ -31,7 +31,7 @@
         <div class="login-form">
              <h1>Inicio sesion</h1>
              <section>
-                  <form action="/PECGISweb/LoginServlet" method="POST">
+                  <form action="/PECGISweb/Login" method="POST">
                         <div class="form-group ">
                            <input name= "user" type="text" class="form-control" placeholder="Nombre " id="UserName" required>
                            <i class="fa fa-user"></i>
@@ -46,7 +46,7 @@
                       <button type="submit" class='log-btn' >Iniciar Sesión</button> 
                   </form>
              </section>
-      
+
           </div>
         <!-- Llamada a la libreria jquery -->
         <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>

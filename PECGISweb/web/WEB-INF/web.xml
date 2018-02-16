@@ -8,6 +8,18 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>Controladores.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Guardar</servlet-name>
+        <servlet-class>Controladores.RegistroServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistroServlet</servlet-name>
+        <servlet-class>Controladores.RegistroServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Controladores.Login</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargarGeoJSON</servlet-name>
         <url-pattern>/CargarGeoJSON</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Guardar</servlet-name>
+        <url-pattern>/Guardar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroServlet</servlet-name>
+        <url-pattern>/RegistroServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

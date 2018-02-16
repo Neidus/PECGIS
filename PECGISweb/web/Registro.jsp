@@ -18,7 +18,7 @@
         <div class="login-form">
              <h1>Registro</h1>
              <section>
-                  <form action="Proceso_Registro.jsp" method="POST">
+                  <form action="/PECGISweb/RegistroServlet" method="POST">
                         <div class="form-group ">   
                            <input name= "user" type="text" class="form-control" placeholder="Introduzca su nombre " id="UserName" required>
                            <i class="fa fa-user"></i>
