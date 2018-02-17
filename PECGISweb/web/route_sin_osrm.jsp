@@ -150,11 +150,9 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci�
 
         //Es para enseñar la ruta de puntos, en un <p> de html.
 
-         
-        
          var ruta = control.getRouter();
 
-        console.log(JSON.stringify(ruta.coordinates)); //Cambiamos el formato a un json, para enseñar.
+        alert(JSON.stringify(ruta.coordinates)); //Cambiamos el formato a un json, para enseñar.
 
     });
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
