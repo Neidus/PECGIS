@@ -45,6 +45,9 @@ and open the template in the editor.
 
         <div id="mapid" style="width: 1000px; height: 1000px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
 
+
+        <p id="ruta_puntos"></p>
+
 <script>
 
     var mymap = L.map('mapid').setView([57.74, 11.94], 13);  // Nos creamos la variable map, para establecer el mapa.
@@ -147,18 +150,15 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci�
         control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng); 
         mymap.closePopup();
 
-        //Y a demás abrimos un pop up enseñando la lista de puntos, en el punto ( 0 0 ).
+        //Es para enseñar la ruta de puntos, en un <p> de html.
 
-        L.popup()
-            .setLatLng(L.latLng(0,0))
-            .setContent(control.getWaypoints())
-            .openOn(mymap);
+         var ruta =  control.getWaypoints();
+
+         document.getElementById("ruta_puntos").innerHTML = ruta;
+   
     });
-
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 });
-
-
 
 
 
