@@ -154,7 +154,7 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci�
         
          ruta = control.getWaypoints();
 
-            alert (JSON.stringify(routeArray));  //Cambiamos el formato a un json, para enseñar.
+            alert (JSON.stringify(ruta));  //Cambiamos el formato a un json, para enseñar.
 
 
     });
