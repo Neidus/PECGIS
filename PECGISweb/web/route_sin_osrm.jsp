@@ -151,7 +151,7 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci√
 
         L.popup()
             .setLatLng(L.latLng(0,0))
-            .setContent(control.getWaypoints().toString())
+            .setContent(control.getWaypoints())
             .openOn(mymap);
     });
 
