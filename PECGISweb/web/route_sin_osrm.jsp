@@ -78,7 +78,7 @@ and open the template in the editor.
     //Nota: Routing.controls, No vale con L.marker sino que los puntos tienen que ser con este objeto --> L.latLng(57.74, 11.94)
 
 
-   L.Routing.control({
+   var control = L.Routing.control({
   waypoints: [
 
     L.latLng(57.74, 11.94),
@@ -111,7 +111,7 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci√
     
     var container = L.DomUtil.create('div'),  //Nos creamos un contenedor, (div en html).
         
-        startBtn = createButton('Establecer como Origen', container),  
+       startBtn = createButton('Establecer como Origen', container),  
                                                                         //llamamos a la funcion, de arriba, para crear el bot y establecerlo en el contenedor.
         destBtn = createButton('Establecer como Meta', container);
 
