@@ -150,9 +150,9 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci�
 
         //Es para enseñar la ruta de puntos, en un <p> de html.
 
-          var ruta = new L.latlng[];
+         
         
-         ruta = control.getRouter().coordinates;
+         var ruta = control.getRouter().coordinates;
 
             alert (JSON.stringify(ruta));  //Cambiamos el formato a un json, para enseñar.
 
