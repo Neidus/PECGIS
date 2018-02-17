@@ -92,10 +92,11 @@ and open the template in the editor.
 
 //Para enseñar la routa.
 
-control.on('routeselected', function(d) {
+control.on('routeselected', function(d) { 
+    
     var route = d.route;
-    // Do something with the route here
-    console.log(JSON.stringify(route.coordinates));
+
+    console.log(JSON.stringify(route.coordinates));  //Lo pasamos a formato JSON.
 });
 
 
