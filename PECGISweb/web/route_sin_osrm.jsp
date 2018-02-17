@@ -46,8 +46,6 @@ and open the template in the editor.
         <div id="mapid" style="width: 1000px; height: 1000px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
 
 
-        <p id="ruta_puntos"></p>
-
 <script>
 
     var mymap = L.map('mapid').setView([57.74, 11.94], 13);  // Nos creamos la variable map, para establecer el mapa.
@@ -152,10 +150,13 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci�
 
         //Es para enseñar la ruta de puntos, en un <p> de html.
 
-         var ruta =  control.getWaypoints();
+          var ruta = new Array();
+        
+         ruta = control.getWaypoints();
 
-         document.getElementById("ruta_puntos").innerHTML = ruta;
-   
+            alert (JSON.stringify(routeArray));  //Cambiamos el formato a un json, para enseñar.
+
+
     });
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 });
