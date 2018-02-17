@@ -152,7 +152,7 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci√
 
           var ruta = new Array();
         
-         ruta = control.getWaypoints();
+         ruta = control.getRouter().coordinates;
 
             alert (JSON.stringify(ruta));  //Cambiamos el formato a un json, para ense√±ar.
 
