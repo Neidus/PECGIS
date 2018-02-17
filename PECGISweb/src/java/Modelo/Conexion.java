@@ -19,7 +19,7 @@ JOptionPane.showMessageDialog(null, "No se pudo cargar el puente JDBC-ODBC.");
 return; 
 } 
 try { 
-conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mbbdda","postgres","19941216"); 
+conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mbbdda","postgres","1234"); 
 sentencia = conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); 
 //JOptionPane.showMessageDialog(null, "Conexión establecida"); 
 } catch (Exception er) { 
