@@ -76,7 +76,7 @@ and open the template in the editor.
 
 
     //Nota: Routing.controls, No vale con L.marker sino que los puntos tienen que ser con este objeto --> L.latLng(57.74, 11.94)
-
+/*
 
    L.Routing.control({
   waypoints: [
@@ -87,16 +87,77 @@ and open the template in the editor.
   ]
 }).addTo(mymap);
 
- 
+ */
 
 //  **************** Funciones, para esteblecer Origen y Destino. ************************************
 
 
 
+//Funcion para crear un boton, con la librería de leaflet, DomUtil, es para poner elementos, por ejemplo html.
+
+function createButton(label, container) {   
+    
+    var btn = L.DomUtil.create('button', '', container);  //Creamos el objeto, y lo metemos en el contededor.
+    
+    btn.setAttribute('type', 'button');  //El objeto va a ser un boton.
+    
+    btn.innerHTML = label;  //Establecemos el texto.
+    
+    return btn; //Nos devuelve el objeto botón.
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta función. 
+    
+    var container = L.DomUtil.create('div'),  //Nos creamos un contenedor, (div en html).
+        
+        startBtn = createButton('Establecer como Origen', container),  
+                                                                        //llamamos a la funcion, de arriba, para crear el bot y establecerlo en el contenedor.
+        destBtn = createButton('Establecer como Meta', container);
+
+    L.popup()
+        
+        .setContent(container)  //Cambiamos el contedor, al crado, para poner en el pop up, el contedor con los botones.
+
+        .setLatLng(e.latlng)   //cambiamos la posicion, donde se genera el popapa, por la posición del click, dentro del mapa.
+        
+        .openOn(mymap);  //y qie se abra en el mapa.
+});
+
+//- - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    
+    // Con domEvent, controlamos los eventos de Domutil. Se ejecuta está función, cuando damos a click, al botón de salida.
+
+     L.DomEvent.on(startBtn, 'click', function() {
+        
+        control.spliceWaypoints(0, 1, e.latlng);   //Se cambia el primer punto de la ruta (waypoints) por las latidud y 
+                                                   //longitud de el click , con splice.
+        mymap.closePopup(); //Y cerramos el popup.
+
+    });
 
 
 
-//****************************************************************************************************
+        //Con el bótom de destino, relizamos lo mismo, pero cambiando sustituyendo por la el punto (latitud y longitud) de la routa waypoints.
+
+      L.DomEvent.on(destBtn, 'click', function() {
+        control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng); 
+        mymap.closePopup();
+
+        //Y a demás abrimos un pop up enseñando la lista de puntos, en el punto ( 0 0 ).
+
+        L.popup()
+            .setLatLng(L.latLng(0,0))
+            .setContent(control.getWaypoints().toString())
+            .openOn(mymap);
+    });
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+//****************************************************************************************************************
 
 
 </script>
