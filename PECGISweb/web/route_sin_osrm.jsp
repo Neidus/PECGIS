@@ -76,7 +76,7 @@ and open the template in the editor.
 
 
     //Nota: Routing.controls, No vale con L.marker sino que los puntos tienen que ser con este objeto --> L.latLng(57.74, 11.94)
-/*
+
 
    L.Routing.control({
   waypoints: [
@@ -87,10 +87,9 @@ and open the template in the editor.
   ]
 }).addTo(mymap);
 
- */
+ 
 
 //  **************** Funciones, para esteblecer Origen y Destino. ************************************
-
 
 
 //Funcion para crear un boton, con la librería de leaflet, DomUtil, es para poner elementos, por ejemplo html.
