@@ -1,0 +1,105 @@
+<%-- 
+    Document   : route_sin_osrm
+    Created on : 13-feb-2018, 17:43:45
+    Author     : Sagrek28-PC
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>  
+    <head>
+        <title>Ruta_con_leafleat</title>
+
+        <!-- Me temos el estilo de leafleat. Es decir métene,os la libreria de leaflet online -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+
+
+    <!-- Para el enrutamiento establecemos unas librerias y un estilo css, en las siguentes links y partes de scripts -->
+
+    <!-- con  lafleat-routing-machine -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+    </head>    
+    <body> 
+        <div>Ruta_con_leafleat</div>
+
+        <!--  **** Parte adri: Utilizano leafleat, para sacar las rutas, opción 1 (No OSRM) ***** -->
+
+        <div id="mapid" style="width: 1000px; height: 1000px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
+
+<script>
+
+    var mymap = L.map('mapid').setView([57.74, 11.94], 13);  // Nos creamos la variable map, para establecer el mapa.
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        id: 'mapbox.streets'
+    }).addTo(mymap);   // Establecemos el titulo,  hacemos referencia a al mapa openstret map. Y lo metemos como atributto a la varible de leaftel --> L.map que y se establece en el Div.
+ 
+        
+  
+    //Establecemos en vez de marcas, los objetos L.latLng para que funcione el routing :
+
+   //var punto_a = L.latLng(57.74, 11.94);
+
+    //var punto_b = L.latLng(57.6792, 11.949);
+
+    //Cuando clickeamos el los puntos nos muestra que puntos son, habriendo un popup, encima del objeto latLng.
+
+        //Con la función bindpopup, para eltexto y luego para enseñarlo, openPopup.
+
+
+    //punto_a.bindPopup("Punto A.").openPopup();
+   
+    //punto_b.bindPopup("Punto B").openPopup();
+
+
+    //Nota: Routing.controls, No vale con L.marker sino que los puntos tienen que ser con este objeto --> L.latLng(57.74, 11.94)
+
+
+   L.Routing.control({
+  waypoints: [
+
+    L.latLng(57.74, 11.94),
+
+     L.latLng(57.6792, 11.949)
+  ]
+}).addTo(mymap);
+
+ 
+
+//  **************** Funciones, para esteblecer Origen y Destino. ************************************
+
+
+
+
+
+
+//****************************************************************************************************
+
+
+</script>
+
+    </body>
+</html>
