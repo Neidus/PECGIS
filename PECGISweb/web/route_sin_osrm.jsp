@@ -89,7 +89,14 @@ and open the template in the editor.
 }).addTo(mymap);
 
  
-   var startBtn = null ;
+
+//Para enseñar la routa.
+
+control.on('routeselected', function(d) {
+    var route = d.route;
+    // Do something with the route here
+    console.log(route.coordinates);
+});
 
 
 //  **************** Funciones, para esteblecer Origen y Destino. ************************************
@@ -147,12 +154,6 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci�
       L.DomEvent.on(destBtn, 'click', function() {
         control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng); 
         mymap.closePopup();
-
-        //Es para enseñar la ruta de puntos, en un <p> de html.
-
-         var ruta = control.getRouter();
-
-        alert(ruta.coordinates.ToString()); //Cambiamos el formato a un json, para enseñar.
 
     });
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
