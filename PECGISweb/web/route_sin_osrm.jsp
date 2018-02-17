@@ -88,6 +88,8 @@ and open the template in the editor.
 }).addTo(mymap);
 
  
+   var startBtn = null ;
+
 
 //  **************** Funciones, para esteblecer Origen y Destino. ************************************
 
@@ -111,9 +113,11 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci√
     
     var container = L.DomUtil.create('div'),  //Nos creamos un contenedor, (div en html).
         
-       startBtn = createButton('Establecer como Origen', container),  
+      startBtn = createButton('Establecer como Origen', container),  
                                                                         //llamamos a la funcion, de arriba, para crear el bot y establecerlo en el contenedor.
-        destBtn = createButton('Establecer como Meta', container);
+       destBtn = createButton('Establecer como Meta', container);
+
+
 
     L.popup()
         
@@ -122,7 +126,6 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci√
         .setLatLng(e.latlng)   //cambiamos la posicion, donde se genera el popapa, por la posici√≥n del click, dentro del mapa.
         
         .openOn(mymap);  //y qie se abra en el mapa.
-});
 
 //- - - - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
     
@@ -153,6 +156,9 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci√
     });
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+});
+
+
 
 
 
