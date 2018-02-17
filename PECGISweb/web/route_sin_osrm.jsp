@@ -152,7 +152,7 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci�
 
          var ruta = control.getRouter();
 
-        alert(ruta.coordinates); //Cambiamos el formato a un json, para enseñar.
+        alert(ruta.coordinates.ToString()); //Cambiamos el formato a un json, para enseñar.
 
     });
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
