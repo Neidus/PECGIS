@@ -64,6 +64,14 @@
      <br><br>
      Eres admin por lo que aqui meteremos botones de accion solo para ti en este fragmento
      <% } %>
+     
+    <% if (session.getAttribute("rutas")!=null) {%>
     
+    <script>
+        var rutaUsuario = <%= session.getAttribute("rutas") %>
+        L.geoJSON(rutaUsuario).addTo(mymap);
+    </script>
+    
+    <% } %>
   </body>
 </html>
