@@ -35,7 +35,7 @@ public class Login2 extends HttpServlet {
         String nombre = req.getParameter("user"); 
         String pass = req.getParameter("pass"); 
         
-        HttpSession sesion = req.getSession(true);
+        HttpSession sesion = req.getSession();
         
         if (sesion.getAttribute("usuario")!=null){
              System.out.println("User ya existe anteriormente");

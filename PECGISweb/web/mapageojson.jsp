@@ -23,7 +23,7 @@
                     <% if (session.getAttribute("usuario")==null) {%>
                         function redireccionar() 
                     {
-                        location.href="index.jsp"; //Redireccionamos al inicio si no estamos conectados a ningun usuario
+                        location.href="/PECGISweb/index.jsp"; //Redireccionamos al inicio si no estamos conectados a ningun usuario
                     } 
                     setTimeout ("redireccionar()", 0);
                     <% }%>
@@ -60,7 +60,7 @@
 	}).addTo(mymap);
     </script>
     
-    <% if (session.getAttribute("usuario").equals("admin")) {%> 
+    <% if ((session.getAttribute("usuario")!=null)&&(session.getAttribute("usuario").equals("admin"))) {%> 
      <br><br>
      Eres admin por lo que aqui meteremos botones de accion solo para ti en este fragmento
      <% } %>

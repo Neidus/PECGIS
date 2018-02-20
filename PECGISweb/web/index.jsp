@@ -59,7 +59,7 @@
      <script> // Script para controlar las sesiones
                         function redireccionar() 
                     {
-                        location.href="mapageojson.jsp"; //Redireccionamos a la pagina con leaflet
+                        location.href="/PECGISweb/mapageojson.jsp"; //Redireccionamos a la pagina con leaflet
                     } 
                     setTimeout ("redireccionar()", 0);
                     <% } %>

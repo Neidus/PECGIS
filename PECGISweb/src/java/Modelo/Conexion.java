@@ -77,7 +77,7 @@ public static void alta(String cadena) {
         try
         {
             sentencia = conexion.createStatement();
-            resultado = sentencia.executeQuery("Select * from \"Usuario\" where usuario='"+ nombre +"' and pass='"+ pass +"'"); //ejecuta el SQL
+            resultado = sentencia.executeQuery("Select * from \"usuario\" where usuario='"+ nombre +"' and pass='"+ pass +"'"); //ejecuta el SQL
             existe = resultado.next(); // Si da un resultado, el usuario existe
         }catch(Exception e){
             System.out.println("No lee de la tabla:" + e);
