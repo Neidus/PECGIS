@@ -89,6 +89,10 @@ and open the template in the editor.
 }).addTo(mymap);
 
  
+//Objeto String en javaScript que guarda todo el conjunto de puntos de la ruta.
+
+    var ruta;
+
 
 //Para enseñar la routa.
 
@@ -96,8 +100,11 @@ control.on('routeselected', function(d) {
     
     var route = d.route;
 
-    console.log(JSON.stringify(route.coordinates));  //Lo pasamos a formato JSON.
+    ruta = JSON.stringify(route.coordinates);  //Lo pasamos a formato y lo guardamos enun objeto string.
+
+    console.log(ruta);  //Mostramos por consola, que da ese formato.
 });
+
 
 
 //  **************** Funciones, para esteblecer Origen y Destino. ************************************
