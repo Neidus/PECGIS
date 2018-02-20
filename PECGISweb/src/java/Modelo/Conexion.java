@@ -27,6 +27,18 @@ JOptionPane.showMessageDialog(null, "Error de conexion");
 } 
 }
 
+public void conectar() { 
+    try
+    {
+        Class.forName("org.postgresql.Driver"); 
+        conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mbbdda","postgres","1234"); 
+        sentencia = conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); 
+        System.out.println("Se ha conectado");
+    }
+    catch(Exception e){
+    System.out.println("No se ha conectado:" + e);}
+}
+
 public static void alta(String cadena) { 
     if (conexion == null) { 
         conecta(); 
@@ -57,5 +69,25 @@ public static void alta(String cadena) {
             System.out.println("Error al consultar");
             return false;
         }
+    }
+    
+    public boolean esValido(String nombre, String pass) {
+        
+        boolean existe = false;
+        try
+        {
+            sentencia = conexion.createStatement();
+            resultado = sentencia.executeQuery("Select * from \"Usuario\" where usuario='"+ nombre +"' and pass='"+ pass +"'"); //ejecuta el SQL
+            existe = resultado.next(); // Si da un resultado, el usuario existe
+        }catch(Exception e){
+            System.out.println("No lee de la tabla:" + e);
+        }
+        return(existe);
+    }
+    
+    public void cerrarConexion() {
+        try {
+            conexion.close();
+        } catch (Exception e){}
     }
 }

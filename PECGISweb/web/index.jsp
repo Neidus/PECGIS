@@ -31,7 +31,7 @@
         <div class="login-form">
              <h1>Inicio sesion</h1>
              <section>
-                  <form action="/PECGISweb/Login" method="POST">
+                  <form action="/PECGISweb/Login2" method="POST">
                         <div class="form-group ">
                            <input name= "user" type="text" class="form-control" placeholder="Nombre " id="UserName" required>
                            <i class="fa fa-user"></i>

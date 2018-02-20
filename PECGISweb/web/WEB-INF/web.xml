@@ -20,6 +20,10 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>Controladores.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Login2</servlet-name>
+        <servlet-class>Controladores.Login2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargarGeoJSON</servlet-name>
         <url-pattern>/CargarGeoJSON</url-pattern>
@@ -40,13 +44,17 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login2</servlet-name>
+        <url-pattern>/Login2</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>mapageojson.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 </web-app>
