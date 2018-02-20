@@ -64,7 +64,7 @@ public class CargarGeoJSON extends HttpServlet {
 		try {
 
 			connection = DriverManager.getConnection(
-					"jdbc:postgresql://127.0.0.1:5432/pecgis", "postgres",
+					"jdbc:postgresql://127.0.0.1:5432/mbbdda", "postgres",
 					"1234");
 
 		} catch (SQLException e) {
@@ -109,7 +109,7 @@ public class CargarGeoJSON extends HttpServlet {
         try
         {
             set = connection.createStatement();
-            rs = set.executeQuery("SELECT ST_AsGeoJSON(geom) FROM geometries;");
+            rs = set.executeQuery("SELECT ST_AsGeoJSON(geom) FROM rutas;");
              System.out.println("Estoy en service2");
              
              String objetosGeoJSON=""; 
