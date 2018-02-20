@@ -38,15 +38,19 @@ public class Login2 extends HttpServlet {
         HttpSession sesion = req.getSession(true);
         
         if (sesion.getAttribute("usuario")!=null){
-             res.sendRedirect("/PECGISweb/index.jsp");
+             System.out.println("User ya existe anteriormente");
+             res.sendRedirect("/PECGISweb/mapageojson.jsp");
              return;
         }
         
         
         if (!c.esValido(nombre, pass)) {
+            System.out.println("User no valido");
             res.sendRedirect(res.encodeRedirectURL("/PECGISweb/index.jsp")); 
             sesion.setAttribute("error", "El usuario y/o contraseña no son correctos");
+            
         } else {
+            System.out.println("User valido");
             sesion.setAttribute("usuario", nombre);
             res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp"));
         }

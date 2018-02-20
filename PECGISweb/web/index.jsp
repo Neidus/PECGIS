@@ -12,8 +12,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="diseño\Main.css">
+        
     </head>
     <body>
+        
+        
+        
         <!--
     <script type="text/javascript">
          $(document).ready(function(){
@@ -27,7 +31,9 @@
         });
         });
     </script>-->
+        
     
+    <% if (session.getAttribute("usuario")==null) {%>
         <div class="login-form">
              <h1>Inicio sesion</h1>
              <section>
@@ -48,7 +54,20 @@
              </section>
 
           </div>
+     <% }  else {%>   
+     
+     <script> // Script para controlar las sesiones
+                        function redireccionar() 
+                    {
+                        location.href="mapageojson.jsp"; //Redireccionamos a la pagina con leaflet
+                    } 
+                    setTimeout ("redireccionar()", 0);
+                    <% } %>
+    </script>
+        
+        
         <!-- Llamada a la libreria jquery -->
         <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        
     </body>
 </html>
