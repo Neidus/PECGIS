@@ -45,6 +45,12 @@
 			// icono que se puede mover 
 			L.marker([position.coords.latitude, position.coords.longitude],{draggable: true}).addTo(map);
 		}
+                
+               function enviar_posicion (position){
+                   var latitud= position.coords.latitude;
+                   var longitud=position.coords.longitude;
+                   
+               })
 		</script>
 	</body>
 </html>

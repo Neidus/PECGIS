@@ -104,6 +104,12 @@ public class InsertarGeoJSONServlet extends HttpServlet {
     public void service(HttpServletRequest req,
     HttpServletResponse res) throws ServletException, IOException
     { 
+      System.out.println("Estoy en service");
+      
+        
+        
+        
+        
         
     }
 

@@ -115,12 +115,12 @@ public class CargarGeoJSON extends HttpServlet {
              String objetosGeoJSON=""; 
              if (rs.next()) {   //Guardamos el conjunto de elementos geométricos en el String
                                 // que será devuelto al jsp
-                 objetosGeoJSON += rs.getString(1) + "\n";
+                 objetosGeoJSON +="[" + rs.getString(1) + "\n";
                  while (rs.next())
                  {
                      objetosGeoJSON += "," + rs.getString(1) + "\n";   
                  }
-                 
+                 objetosGeoJSON+="]";
                  System.out.println(objetosGeoJSON);
              } else {
                  System.out.println("No hay puntos!!!!"); //La consulta esta vacía de elementos
