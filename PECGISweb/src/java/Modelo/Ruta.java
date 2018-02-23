@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.*;
 
 /**
  *
@@ -65,6 +66,17 @@ public class Ruta {
         
         return objetosGeoJSON;
     }
+    
+    public void insertruta (String cadena){
+    try { 
+        sentencia.execute(cadena); 
+        } catch (Exception er) { 
+             JOptionPane.showMessageDialog(null, "Lo sentimos su operación solicitada no se pudo realizar debido a un error de " + er); 
+        }       
+    }
+    
+    
+   
     
     public void cerrarConexion() {
         try {

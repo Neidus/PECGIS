@@ -17,21 +17,24 @@
 </head>
 	<body>
 		<div style="text-align: center;">
-			<button onclick="obtener_localizacion()">Localizate</button>
+			<button onclick="obtener_localizacion()">Localizate</button>         
 		</div>
 		<br>
 		<div id = 'map'>
 		</div>
-		<script>
+		<script language="JavaScript1.2">
+                 
 		function obtener_localizacion() {
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(mostrar_posicion);
+   
 			} 
 			else{
 					alert("No se pudo geolocalizar")
 				}
 		}
-		function mostrar_posicion (position) {
+		function mostrar_posicion (position) {  
+                  
 		// L.map es la clase centrar que crea y manipula el mapa
 			var map = L.map('map'). // hacemos una llamada al div 
 			// selecionamos una serie de coordenadas y un nivel de zoom 
@@ -44,13 +47,15 @@
 			L.control.scale().addTo(map);
 			// icono que se puede mover 
 			L.marker([position.coords.latitude, position.coords.longitude],{draggable: true}).addTo(map);
+                         
+                        
 		}
                 
-               function enviar_posicion (position){
-                   var latitud= position.coords.latitude;
-                   var longitud=position.coords.longitude;
-                   
-               })
+              
+
 		</script>
+
+               
+                
 	</body>
 </html>

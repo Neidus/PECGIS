@@ -103,6 +103,11 @@ control.on('routeselected', function(d) {
     ruta = JSON.stringify(route.coordinates);  //Lo pasamos a formato y lo guardamos enun objeto string.
 
     console.log(ruta);  //Mostramos por consola, que da ese formato.
+    
+   // parte añadida por sergio 
+   document.form.resultado.value=ruta;
+   
+   
 });
 
 
@@ -173,6 +178,12 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci�
 
 
 </script>
+<!--Parte añadida por sergio-->
+            <form name="form">
+                <!--<input type="text" value="" name="resultado"> --> 
+                <textarea name="resultado" rows="10" cols="40" disabled="true"></textarea>
+           </form>
 
+       
     </body>
 </html>

@@ -29,8 +29,8 @@
         <servlet-class>Controladores.Logout</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>InsertarGeoJSONServlet</servlet-name>
-        <servlet-class>Controladores.InsertarGeoJSONServlet</servlet-class>
+        <servlet-name>InsertarGeoJSON</servlet-name>
+        <servlet-class>Controladores.InsertarGeoJSON</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CargarGeoJSON</servlet-name>
@@ -61,8 +61,8 @@
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>InsertarGeoJSONServlet</servlet-name>
-        <url-pattern>/InsertarGeoJSONServlet</url-pattern>
+        <servlet-name>InsertarGeoJSON</servlet-name>
+        <url-pattern>/InsertarGeoJSON</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

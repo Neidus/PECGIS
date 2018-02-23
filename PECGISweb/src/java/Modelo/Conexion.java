@@ -9,7 +9,7 @@ public class Conexion extends Usuario{
 static Connection conexion; 
 static Statement sentencia; 
 public ResultSet resultado;
-Controladores.Login obj;
+
 
 public static void conecta() { 
 try { 

@@ -71,7 +71,7 @@
         var rutaUsuario = <%= session.getAttribute("rutas") %>
         L.geoJSON(rutaUsuario).addTo(mymap);
     </script>
-    
+    <p>coordenadas <%= session.getAttribute("rutas") %></p>
     <% } %>
   </body>
 </html>
