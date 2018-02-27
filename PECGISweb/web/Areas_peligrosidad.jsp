@@ -117,8 +117,11 @@ map.on('draw:created', function(e) {
 });
 
 </script>
-<form action="PECGISweb/">
-    
+<form action="PECGISweb/NOESTAIMPLEMENTADOAUN">
+    <!-- guardara el json de las coordenadas de las zonas -->
+    <input name= "zonas" id="mizona" type="hidden" >
+    <!-- guardara los niveles de peligrosidad introducidos para cada zona -->
+    <input name= "peligrosidades" id="peligrosidades" type="hidden" >
 </form>
     </body>
 </html>
