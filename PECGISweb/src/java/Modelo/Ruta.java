@@ -91,7 +91,7 @@ public class Ruta {
     */
     public void insertruta (String ruta){
     try { 
-        sentencia.execute("INSERT INTO rutas(nombre, usuario, geom) VALUES ('nombre', 'pepe', ST_GeomFromGeoJSON('" + ruta + "'));");
+        sentencia.execute("INSERT INTO rutas(nombre, usuario, geom) VALUES ('nombre', 'pepe', ST_SetSRID(ST_GeomFromGeoJSON('" + ruta + "'),4326));");
         } catch (Exception er) { 
              JOptionPane.showMessageDialog(null, "Lo sentimos su operación solicitada no se pudo realizar debido a un error de " + er); 
         }       
