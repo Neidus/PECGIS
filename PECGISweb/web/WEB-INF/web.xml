@@ -32,6 +32,10 @@
         <servlet-name>InsertarGeoJSON</servlet-name>
         <servlet-class>Controladores.InsertarGeoJSON</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertarZona</servlet-name>
+        <servlet-class>Controladores.InsertarZona</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargarGeoJSON</servlet-name>
         <url-pattern>/CargarGeoJSON</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>InsertarGeoJSON</servlet-name>
         <url-pattern>/InsertarGeoJSON</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertarZona</servlet-name>
+        <url-pattern>/InsertarZona</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

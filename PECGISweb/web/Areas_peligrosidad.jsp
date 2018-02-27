@@ -117,6 +117,8 @@ map.on('draw:created', function(e) {
 });
 
 </script>
-       
+<form action="PECGISweb/">
+    
+</form>
     </body>
 </html>

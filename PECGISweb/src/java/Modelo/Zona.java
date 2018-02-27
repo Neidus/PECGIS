@@ -90,6 +90,8 @@ public class Zona {
     */
     public void insertZona (String ruta){
     try { 
+        
+        //NO ES FUNCIONAL AUN!!!!!!!
         sentencia.execute("INSERT INTO zonas(nombre, usuario, geom) VALUES ('nombre', 'pepe', ST_GeomFromGeoJSON('" + ruta + "'));");
         } catch (Exception er) { 
              JOptionPane.showMessageDialog(null, "Lo sentimos su operación solicitada no se pudo realizar debido a un error de " + er); 
