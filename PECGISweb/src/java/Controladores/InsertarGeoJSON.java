@@ -38,9 +38,17 @@ public class InsertarGeoJSON extends HttpServlet {
     public void service(HttpServletRequest req,
     HttpServletResponse res) throws ServletException, IOException
     {
-        HttpSession sesion = req.getSession();
-        sesion.setAttribute("rutas", r.getRuta());
-        res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp"));
+         HttpSession sesion = req.getSession();
+        
+        if (sesion.getAttribute("usuario")!=null){
+            
+             res.sendRedirect("/PECGISweb/mapageojson.jsp");
+             return;
+        }
+        String json = req.getParameter("rutas"); 
+        r.insertruta(r.JsonToGeoJson(json));
+        res.sendRedirect(res.encodeRedirectURL("/PECGISweb/route_sin_osrm.jsp"));
+        
     }
 
     /*

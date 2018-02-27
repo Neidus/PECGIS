@@ -35,6 +35,7 @@ and open the template in the editor.
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    
 
     </head>    
     <body> 
@@ -101,11 +102,9 @@ control.on('routeselected', function(d) {
 
     ruta = JSON.stringify(route.coordinates);  //Lo pasamos a formato y lo guardamos enun objeto string.
 
-    console.log(ruta);  //Mostramos por consola, que da ese formato.
-    
    // parte a√±adida por sergio 
    document.form.resultado.value=ruta;
-   
+   document.getElementById("miruta").value = ruta;
    
 });
 
@@ -183,6 +182,13 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci√
                 <textarea name="resultado" rows="10" cols="40" disabled="true"></textarea>
            </form>
 
-       
+<!--Formulario para introducir la ruta -->
+<form action="/PECGISweb/InsertarGeoJSON" method="POST">
+    
+    <!--Metemos un input oculto para poder devolverle el valor a java cuando guardemos la ruta-->      
+    <input name= "rutas" id="miruta" type="hidden" >
+    <button id="button" >Introducir Ruta</button>
+</form>
+ 
     </body>
 </html>
