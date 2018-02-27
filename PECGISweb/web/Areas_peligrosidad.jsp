@@ -113,6 +113,7 @@ map.on('draw:created', function(e) {
     layer.setStyle({'color': getRandomColor_in() }); //Cuando el layer, del evento, sea un poligono (Area) cambiamos dentro de su estilo, el atributo color, y establecemos el color generado.
   }
   editableLayers.addLayer(layer); //Y lo establecemos dentro de nuestro array de layers.
+  alert(JSON.stringify(layer.getLatLngs()));
 });
 
 </script>
