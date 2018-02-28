@@ -39,7 +39,7 @@ public class Login2 extends HttpServlet {
         
         if (sesion.getAttribute("usuario")!=null){
              System.out.println("User ya existe anteriormente");
-             res.sendRedirect("/PECGISweb/mapageojson.jsp");
+             res.sendRedirect("/PECGISweb/Unificacion.jsp");
              return;
         }
         
@@ -52,7 +52,7 @@ public class Login2 extends HttpServlet {
         } else {
             System.out.println("User valido");
             sesion.setAttribute("usuario", nombre);
-            res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp"));
+            res.sendRedirect(res.encodeRedirectURL("/PECGISweb/Unificacion.jsp"));
         }
         
     }
