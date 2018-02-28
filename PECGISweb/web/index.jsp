@@ -47,7 +47,6 @@
                            <i class="fa fa-lock"></i>
                        </div>
                 <!--<span class="alert">Invalid Credentials</span>-->
-                      <a class="link" href="#">Recordar contraseña</a>
                       <a class="link" href="Registro.jsp"> Registrese </a>
                       <button type="submit" class='log-btn' >Iniciar Sesión</button> 
                   </form>
@@ -59,7 +58,7 @@
      <script> // Script para controlar las sesiones
                         function redireccionar() 
                     {
-                        location.href="/PECGISweb/mapageojson.jsp"; //Redireccionamos a la pagina con leaflet
+                        location.href="/PECGISweb/Unificacion.jsp"; //Redireccionamos a la pagina con leaflet
                     } 
                     setTimeout ("redireccionar()", 0);
                     <% } %>

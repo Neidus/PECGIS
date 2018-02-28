@@ -41,7 +41,7 @@ public class Login2 extends HttpServlet {
         
         if (sesion.getAttribute("usuario")!=null){
              System.out.println("User ya existe anteriormente");
-             res.sendRedirect("/PECGISweb/mapageojson.jsp");
+             res.sendRedirect("/PECGISweb/Unificacion.jsp");
              return;
         }
         
