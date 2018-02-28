@@ -113,13 +113,17 @@ map.on('draw:created', function(e) {
     layer.setStyle({'color': getRandomColor_in() }); //Cuando el layer, del evento, sea un poligono (Area) cambiamos dentro de su estilo, el atributo color, y establecemos el color generado.
   }
   editableLayers.addLayer(layer); //Y lo establecemos dentro de nuestro array de layers.
-  alert(JSON.stringify(layer.getLatLngs()));
+  
+  
+  document.getElementById("zonas").value = document.getElementById("zonas").value +"," + JSON.stringify(layer.getLatLngs());
+  alert(document.getElementById("zonas").value);
+   
 });
 
 </script>
 <form action="PECGISweb/NOESTAIMPLEMENTADOAUN">
     <!-- guardara el json de las coordenadas de las zonas -->
-    <input name= "zonas" id="mizona" type="hidden" >
+    <input name= "zonas" id="zonas" type="hidden" >
     <!-- guardara los niveles de peligrosidad introducidos para cada zona -->
     <input name= "peligrosidades" id="peligrosidades" type="hidden" >
 </form>
