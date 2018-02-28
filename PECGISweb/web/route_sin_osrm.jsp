@@ -179,7 +179,7 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funci√
 <!--Parte a√±adida por sergio-->
             <form name="form">
                 <!--<input type="text" value="" name="resultado"> --> 
-                <textarea name="resultado" rows="10" cols="40" disabled="true"></textarea>
+                <textarea name="resultado" rows="10" cols="40" disabled="true"></textarea>                
            </form>
 
 <!--Formulario para introducir la ruta -->
