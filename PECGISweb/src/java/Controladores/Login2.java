@@ -58,7 +58,7 @@ public class Login2 extends HttpServlet {
             r.abrirConexion();
             List<Ruta> rutas = r.getListaRutas((String)sesion.getAttribute("usuario")); //Cargamos la lista de rutas.
             sesion.setAttribute("rutasUsuario2", rutas);
-            res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp"));
+            res.sendRedirect(res.encodeRedirectURL("/PECGISweb/Unificacion.jsp"));
             
         }
         
