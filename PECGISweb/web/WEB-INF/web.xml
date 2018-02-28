@@ -36,6 +36,10 @@
         <servlet-name>InsertarZona</servlet-name>
         <servlet-class>Controladores.InsertarZona</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CargarNombresRutas</servlet-name>
+        <servlet-class>Controladores.CargarNombresRutas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargarGeoJSON</servlet-name>
         <url-pattern>/CargarGeoJSON</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>InsertarZona</servlet-name>
         <url-pattern>/InsertarZona</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargarNombresRutas</servlet-name>
+        <url-pattern>/CargarNombresRutas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
