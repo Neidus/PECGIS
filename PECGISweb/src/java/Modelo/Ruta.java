@@ -85,8 +85,8 @@ public class Ruta {
         for (int i=0; i<partido.length; i++) {
             
             String[] coordenadas = partido[i].substring(1).split(",");
-            geoJson += "[" + coordenadas[0].substring(6) + ", ";
-            geoJson += coordenadas[1].substring(6) + "]\n,";
+            geoJson += "[" + coordenadas[1].substring(6) + ", ";
+            geoJson += coordenadas[0].substring(6) + "]\n,";
         }
         geoJson = geoJson.substring(0, geoJson.length()-1) + "]}";
         
@@ -116,12 +116,14 @@ public class Ruta {
             resultado = sentencia.executeQuery("SELECT nombre, gid_serial FROM rutas WHERE usuario='" + nombreUsuario +"';");
             
             
-            Ruta aux = new Ruta();
+            
             while (resultado.next()) { //Guardamos los nombres e ids en una lista
+                Ruta aux = new Ruta();
                 aux.setNombre(resultado.getString(1));
                 aux.setId(resultado.getString(2));
                 lista.add(aux);
             }
+            
            
         } catch (SQLException ex) {
             Logger.getLogger(Ruta.class.getName()).log(Level.SEVERE, null, ex);

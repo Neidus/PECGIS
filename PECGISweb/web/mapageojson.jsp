@@ -51,7 +51,7 @@
         Elige una de tus rutas:
         <select name="rutasDisponibles">
             <c:forEach items="${rutasUsuario2}" var="ruta">
-                <option value="${ruta.id}"><c:out value="${ruta.nombre}" /></option>
+                <option value="${ruta.id}"><c:out value="${ruta.id}" /></option>
             </c:forEach>
         </select>
         
