@@ -5,7 +5,9 @@
  */
 package Controladores;
 
+import Modelo.Ruta;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,9 +43,13 @@ public class InsertarGeoJSON extends HttpServlet {
          HttpSession sesion = req.getSession();
         
         if (sesion.getAttribute("usuario")!=null){
-            Object prueba = sesion.getAttribute("usuario");
+            String prueba = (String)sesion.getAttribute("usuario");
             String json = req.getParameter("rutas"); 
             r.insertruta(r.JsonToGeoJson(json),prueba);
+            //Como insertamos la ruta debemos actualizar nuevamente la variable
+            //que almacena los nombres de las rutas y sus ids
+            List<Ruta> rutas = r.getListaRutas((String)sesion.getAttribute("usuario")); //Cargamos la lista de rutas.
+            sesion.setAttribute("rutasUsuario2", rutas); //Establecemos el atributo rutas para mandarlo a la pagina
             res.sendRedirect("/PECGISweb/mapageojson.jsp");
             return;
         }       

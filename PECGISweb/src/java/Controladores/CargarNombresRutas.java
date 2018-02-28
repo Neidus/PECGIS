@@ -5,7 +5,10 @@
  */
 package Controladores;
 
+import Modelo.Ruta;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,9 +20,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Varela
  */
-public class CargarGeoJSON extends HttpServlet {
-    
-    Modelo.Ruta r;
+public class CargarNombresRutas extends HttpServlet {
+
+    private Modelo.Ruta r;
     
 
     /*
@@ -31,26 +34,20 @@ public class CargarGeoJSON extends HttpServlet {
        r = new Modelo.Ruta();
        r.abrirConexion();
     }
-
-    /*
-        Se ejecuta tras el init cada vez que lo llamamos.
-    */
-    public void service(HttpServletRequest req,
-    HttpServletResponse res) throws ServletException, IOException
-    {
-        HttpSession sesion = req.getSession();
-        String idRuta = req.getParameter("rutasDisponibles"); 
-        System.out.print(idRuta);
-        sesion.setAttribute("rutas", r.getRuta(idRuta));
-        res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp"));
+    
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        HttpSession sesion = request.getSession();
+        
+        
+        List<Ruta> rutas = r.getListaRutas((String)sesion.getAttribute("usuario")); //Cargamos la lista de rutas.
+        request.setAttribute("rutasUsuario", rutas); //Establecemos el atributo rutas para mandarlo a la pagina
+        request.getRequestDispatcher("/WEB-INF/mapageojson.jsp").forward(request, response);
+        
     }
 
-    /*
-    Se utiliza para parar la conexion con la BBDD.
-    */
-    public void destroy()
-    {
-        System.out.println("Estoy en destroy");
-    }
+
 
 }

@@ -29,7 +29,8 @@
                     <% }%>
    </script>
    
-  
+  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
   </head>
   <body>
     
@@ -41,9 +42,20 @@
       
     <div id="mapid" style="width: 600px; height: 400px;"></div>
   
+    
+    
+        
+  
     <form action="/PECGISweb/CargarGeoJSON" method="POST">
-       
-        <button id="button" >Cargar Datos</button>
+        
+        Elige una de tus rutas:
+        <select name="rutasDisponibles">
+            <c:forEach items="${rutasUsuario2}" var="ruta">
+                <option value="${ruta.id}"><c:out value="${ruta.nombre}" /></option>
+            </c:forEach>
+        </select>
+        
+        <button id="button" >Cargar Ruta Seleccionada</button>
     </form>
     
     

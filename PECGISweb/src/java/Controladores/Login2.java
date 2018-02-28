@@ -5,8 +5,10 @@
  */
 package Controladores;
 
+import Modelo.Ruta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +54,12 @@ public class Login2 extends HttpServlet {
         } else {
             System.out.println("User valido");
             sesion.setAttribute("usuario", nombre);
+            Modelo.Ruta r = new Ruta();
+            r.abrirConexion();
+            List<Ruta> rutas = r.getListaRutas((String)sesion.getAttribute("usuario")); //Cargamos la lista de rutas.
+            sesion.setAttribute("rutasUsuario2", rutas);
             res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp"));
+            
         }
         
     }

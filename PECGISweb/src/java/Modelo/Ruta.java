@@ -8,7 +8,12 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -20,6 +25,9 @@ public class Ruta {
     private Connection conexion;
     private Statement sentencia;
     private ResultSet resultado;
+    
+    private String nombre;
+    private String id;
     
     public void abrirConexion() {
         try
@@ -33,14 +41,14 @@ public class Ruta {
         }
     }
     
-    public String getRuta() {
+    public String getRuta(String id) {
         String objetosGeoJSON=""; 
         System.out.println("Estoy en service");
          //Hacemos la consulta para obtener los datos de la BBDD en formato objeto GeoJSON
         try
         {
             sentencia = conexion.createStatement();
-            resultado = sentencia.executeQuery("SELECT ST_AsGeoJSON(geom) FROM rutas;");
+            resultado = sentencia.executeQuery("SELECT ST_AsGeoJSON(geom) FROM rutas WHERE gid_serial='" + id + "';");
              System.out.println("Estoy en service2");
              
              
@@ -82,7 +90,6 @@ public class Ruta {
         }
         geoJson = geoJson.substring(0, geoJson.length()-1) + "]}";
         
-        System.out.println(geoJson);
         return geoJson;
     }
     
@@ -97,12 +104,52 @@ public class Ruta {
         }       
     }
     
-    
-   
+    /*
+        Obtenemos una lista de nombres e ids de las rutas de un usuario concreto
+    */
+    public List<Ruta> getListaRutas( String nombreUsuario) {
+        List<Ruta> lista = new ArrayList<Ruta>();
+        try {
+            
+            lista.clear();
+            sentencia = conexion.createStatement();
+            resultado = sentencia.executeQuery("SELECT nombre, gid_serial FROM rutas WHERE usuario='" + nombreUsuario +"';");
+            
+            
+            Ruta aux = new Ruta();
+            while (resultado.next()) { //Guardamos los nombres e ids en una lista
+                aux.setNombre(resultado.getString(1));
+                aux.setId(resultado.getString(2));
+                lista.add(aux);
+            }
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Ruta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
     
     public void cerrarConexion() {
         try {
             conexion.close();
         } catch (Exception e){}
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
 }
