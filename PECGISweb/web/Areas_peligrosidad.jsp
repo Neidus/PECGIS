@@ -37,7 +37,7 @@ and open the template in the editor.
 
         <!--  **** Parte adri: Utilizano leafleat.draw, para dibujar areas con leaflet -->
 
-        <div id="map" style="width: 600px; height: 600px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
+        <div id="map" style="width: 1000px; height: 1000px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
 
 
 <script>
@@ -109,14 +109,65 @@ map.on('draw:created', function(e) {
   return color;
 }
 
+function createButton(label, container) {   
+    
+    var btn = L.DomUtil.create('button', '', container);  //Creamos el objeto, y lo metemos en el contededor.
+    
+    btn.setAttribute('type', 'button');  //El objeto va a ser un boton.
+    
+    btn.innerHTML = label;  //Establecemos el texto.
+    
+    return btn; //Nos devuelve el objeto botón.
+}
+
+
+function createInput(label, container) {   
+    
+    var area = L.DomUtil.create('input', '', container);  //Creamos el objeto, y lo metemos en el contededor.
+    
+    area.setAttribute('type', 'input');  //El objeto va a ser un area.
+    
+    area.innerHTML = label;  //Establecemos el texto.
+    
+      return area;
+  }
+
    if (type === 'polygon') {
     layer.setStyle({'color': getRandomColor_in() }); //Cuando el layer, del evento, sea un poligono (Area) cambiamos dentro de su estilo, el atributo color, y establecemos el color generado.
   }
+
   editableLayers.addLayer(layer); //Y lo establecemos dentro de nuestro array de layers.
   
-  
-  document.getElementById("zonas").value = document.getElementById("zonas").value +"," + JSON.stringify(layer.getLatLngs());
-  alert(document.getElementById("zonas").value);
+
+    var container = L.DomUtil.create('div'),  //Nos creamos un contenedor, (div en html).
+        
+      area_texto = createInput('Escribe la peligrosidad (0 - 5)', container),   
+        
+      boton = createButton('Cargar peligrosidad del Area', container);
+     
+      L.popup()
+        
+        .setContent(container)  //Cambiamos el contedor, al crado, para poner en el pop up, el contedor con los boton y el area, para meter la peligrosidad..
+
+        .setLatLng(layer.getCenter())  //Lo mostramos en el centro del mapa.
+        
+        .openOn(map); 
+        
+        
+        L.DomEvent.on(boton, 'click', function() {  //Cuando hacemos click al boton cogemos los datos.
+        
+          document.getElementById("zonas").value = document.getElementById("zonas").value +"," + JSON.stringify(layer.getLatLngs());  
+          alert(document.getElementById("zonas").value);  //Establecemos el conjunto de puntos a un input de un formulario.
+
+           document.getElementById("peligrosidades").value = document.getElementById("peligrosidades").value +"," + area_texto.value;
+
+          alert(document.getElementById("peligrosidades").value); 
+
+        map.closePopup(); //Y cerramos el popup. 
+    });
+
+
+ 
    
 });
 
