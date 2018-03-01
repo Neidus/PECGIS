@@ -10,39 +10,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
+    <title>Cargar Recorrido</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
    crossorigin=""/>
     <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
    integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
    crossorigin=""></script>
-   
-   <script> // Script para controlar las sesiones
-                    <% if (session.getAttribute("usuario")==null) {%>
-                        function redireccionar() 
-                    {
-                        location.href="/PECGISweb/index.jsp"; //Redireccionamos al inicio si no estamos conectados a ningun usuario
-                    } 
-                    setTimeout ("redireccionar()", 0);
-                    <% }%>
-   </script>
-   
-  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@include file="./header.jsp" %> 
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
   </head>
   <body>
-    
-      
-    <form action="/PECGISweb/Logout" method="POST">
-       <p>Bienvenido <%= session.getAttribute("usuario") %> </p>
-       <button id="botonLogout" >Desconectarse</button>
-    </form>
-      
+     
+   
     <div id="mapid" style="width: 600px; height: 400px;"></div>
-  
-    
+   
     
         
   
