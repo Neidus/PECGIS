@@ -42,6 +42,7 @@ public class CargarGeoJSON extends HttpServlet {
         String idRuta = req.getParameter("rutasDisponibles"); 
         System.out.print(idRuta);
         sesion.setAttribute("rutas", r.getRuta(idRuta));
+        System.out.println("Ruta: " + r.getRuta(idRuta));
         res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp"));
     }
 
