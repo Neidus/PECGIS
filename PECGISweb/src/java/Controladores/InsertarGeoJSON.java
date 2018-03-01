@@ -45,10 +45,12 @@ public class InsertarGeoJSON extends HttpServlet {
         if (sesion.getAttribute("usuario")!=null){
 
             String usuario = (String)sesion.getAttribute("usuario");
+            
+            String nombre =req.getParameter("nombre");
 
             String json = req.getParameter("rutas"); 
 
-            r.insertruta(r.JsonToGeoJson(json),usuario);
+            r.insertruta(r.JsonToGeoJson(json),usuario,nombre);
             //Como insertamos la ruta debemos actualizar nuevamente la variable
             //que almacena los nombres de las rutas y sus ids
             List<Ruta> rutas = r.getListaRutas((String)sesion.getAttribute("usuario")); //Cargamos la lista de rutas.

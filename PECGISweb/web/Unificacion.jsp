@@ -45,7 +45,7 @@
 								<h1>Bienvenido <strong><%= session.getAttribute("usuario") %></strong>.</h1>
 							</header>
 							<p>Establezca su recorrido.</p>
-							<a href="#work" class="button big scrolly">Learn about what I do</a>
+							<!--<a href="#work" class="button big scrolly">Learn about what I do</a>-->
 						</div>
 					</div>
 				</article>
