@@ -198,7 +198,8 @@ mymap.on('click', function(e) {   //Cuando hacemos click, se ejecuta esta funció
 <!--Formulario para introducir la ruta -->
 <form action="/PECGISweb/InsertarGeoJSON" method="POST">
     
-    <!--Metemos un input oculto para poder devolverle el valor a java cuando guardemos la ruta-->      
+    <!--Metemos un input oculto para poder devolverle el valor a java cuando guardemos la ruta--> 
+    <p>Por favor inserte el nombre de la ruta <strong><input name= "nombre" type="text" class="wrapper style4 form input" id="Nombre" required></strong></p>
     <input name= "rutas" id="miruta" type="hidden" >
     <button id="button" >Introducir Ruta</button>
 </form>
