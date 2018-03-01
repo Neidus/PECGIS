@@ -27,11 +27,11 @@
    
     <div id="mapid" style="width: 600px; height: 400px;"></div>
    
-    
         
   
     <form action="/PECGISweb/CargarGeoJSON" method="POST">
-        
+        <!--Cargamos los nombres de las rutas del usuario y de forma oculta los ids 
+        para poder cargarlos cuando pulsemos el boton -->
         Elige una de tus rutas:
         <select name="rutasDisponibles">
             <c:forEach items="${rutasUsuario2}" var="ruta">
@@ -62,6 +62,8 @@
      Eres admin por lo que aqui meteremos botones de accion solo para ti en este fragmento
      <% } %>
      
+     
+     <!--Añadimos la ruta del usuario al mapa -->
     <% if (session.getAttribute("rutas")!=null) {%>
     
     <script>
@@ -75,11 +77,7 @@
     
     <% if (session.getAttribute("zonasUsuario")!=null) {%>
     
-        
-        
-    
-    
-    
+    <!--Aqui cargamos las zonas añadiendo una a una las zonas en geojson al mapa -->
     <c:forEach items="${zonasUsuario}" var="geoJsonZona">
       <p>${geoJsonZona.zona}</p>  
       <script>
@@ -87,6 +85,7 @@
            L.geoJSON(myzona).addTo(mymap);
       </script>
     </c:forEach>
+      
     <% } %>
   </body>
 </html>
