@@ -70,29 +70,27 @@ public class Zona {
         Recibiendo un string en formato json con los elementos "lat" y "lng" lo pasa a geoJson
     */
     public String JsonToGeoJson(String json) {
-        String[] partido = json.substring(1, json.length()-2).split("},");
+        String[] partido = json.substring(1, json.length()-2).split("},\\{");
         
-        String geoJson = "{\"type\": \"LineString\",\n\"coordinates\": [";
+        String geoJson = "{\"type\": \"Polygon\",\n\"coordinates\": [[";
         for (int i=0; i<partido.length; i++) {
             
             String[] coordenadas = partido[i].substring(1).split(",");
-            geoJson += "[" + coordenadas[0].substring(6) + ", ";
-            geoJson += coordenadas[1].substring(6) + "]\n,";
+            geoJson += "[" + coordenadas[1].substring(6) + ", ";
+            geoJson += coordenadas[0].substring(6) + "]\n,";
         }
-        geoJson = geoJson.substring(0, geoJson.length()-1) + "]}";
+        geoJson = geoJson.substring(0, geoJson.length()-1) + "]]}";
         
-        System.out.println(geoJson);
         return geoJson;
     }
     
     /*
         Dado un nombre de ruta, la ruta y el usuario se inserta una ruta en la BBDD
     */
-    public void insertZona (String ruta){
+    public void insertZona (String zona, String peligrosidad){
     try { 
         
-        //NO ES FUNCIONAL AUN!!!!!!!
-        sentencia.execute("INSERT INTO zonas(nombre, usuario, geom) VALUES ('nombre', 'pepe', ST_GeomFromGeoJSON('" + ruta + "'));");
+        sentencia.execute("INSERT INTO zonas(peligrosidad,geom) VALUES (" +peligrosidad +", ST_SetSRID(ST_GeomFromGeoJSON('" + zona + "'),4326));");
         } catch (Exception er) { 
              JOptionPane.showMessageDialog(null, "Lo sentimos su operación solicitada no se pudo realizar debido a un error de " + er); 
         }       

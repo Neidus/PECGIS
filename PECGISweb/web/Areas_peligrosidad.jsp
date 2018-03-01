@@ -156,12 +156,22 @@ function createInput(label, container) {
         
         L.DomEvent.on(boton, 'click', function() {  //Cuando hacemos click al boton cogemos los datos.
         
-          document.getElementById("zonas").value = document.getElementById("zonas").value +"," + JSON.stringify(layer.getLatLngs());  
-          alert(document.getElementById("zonas").value);  //Establecemos el conjunto de puntos a un input de un formulario.
+        if (document.getElementById("zonas").value === "") {
+            document.getElementById("zonas").value =  JSON.stringify(layer.getLatLngs());  
+            
+        } else {
+            document.getElementById("zonas").value = document.getElementById("zonas").value +"," + JSON.stringify(layer.getLatLngs());  
+        }
+          
 
-           document.getElementById("peligrosidades").value = document.getElementById("peligrosidades").value +"," + area_texto.value;
-
-          alert(document.getElementById("peligrosidades").value); 
+        if (document.getElementById("peligrosidades").value === "") {
+            document.getElementById("peligrosidades").value = area_texto.value;
+        } else {
+            document.getElementById("peligrosidades").value = document.getElementById("peligrosidades").value +"," + area_texto.value;
+        }
+          
+          //alert(document.getElementById("zonas").value);  //Establecemos el conjunto de puntos a un input de un formulario.
+          //alert(document.getElementById("peligrosidades").value); 
 
         map.closePopup(); //Y cerramos el popup. 
     });
@@ -172,11 +182,16 @@ function createInput(label, container) {
 });
 
 </script>
-<form action="PECGISweb/NOESTAIMPLEMENTADOAUN">
+
+ 
+    
+<form action="/PECGISweb/InsertarZona" method="POST">
+ 
     <!-- guardara el json de las coordenadas de las zonas -->
     <input name= "zonas" id="zonas" type="hidden" >
     <!-- guardara los niveles de peligrosidad introducidos para cada zona -->
     <input name= "peligrosidades" id="peligrosidades" type="hidden" >
+    <button>Insertar las zonas</button>
 </form>
     </body>
 </html>

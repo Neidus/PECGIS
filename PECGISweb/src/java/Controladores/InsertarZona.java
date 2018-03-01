@@ -42,7 +42,35 @@ public class InsertarZona extends HttpServlet {
          HttpSession sesion = req.getSession();
         
         String json = req.getParameter("zonas"); 
-        z.insertZona(z.JsonToGeoJson(json));
+        String peligrosidades = req.getParameter("peligrosidades");
+        
+        //System.out.println("json quitando extremos: " + json.substring(2, json.length()-3));
+        String[] listaZonas = json.substring(2, json.length()-2).split("]],\\[\\["); //Dividimos la cadena en los conjuntos de coordenadas de cada zona en formato json
+        String[] listaPeligrosidad = peligrosidades.split(","); //obtenemos cada peligrosidad por separado.
+        
+        for (int i=0; i< listaZonas.length; i++) {
+            //Llamamos al convertidor de json a geojson una vez por cada zona que tenemos en listaZonas
+            //y las almacenamos en geoJsonZonas
+            //geoJsonZonas[i] = z.JsonToGeoJson(listaZonas[i]);
+            
+        }
+        
+        for (int i=0; i<listaZonas.length; i++) {
+            System.out.println("Zona numero " + i+1 + ": " + z.JsonToGeoJson(listaZonas[i]));
+            System.out.println("Peligro asociado a zona numero " + i+1 + ": " + listaPeligrosidad[i]);
+            z.insertZona(z.JsonToGeoJson(listaZonas[i]), listaPeligrosidad[i]);
+        }
+        
+        
+        
+         /*
+        
+        */
+        
+        
+        
+        
+        
         res.sendRedirect(res.encodeRedirectURL("/PECGISweb/Areas_peligrosidad.jsp"));
         
     }
