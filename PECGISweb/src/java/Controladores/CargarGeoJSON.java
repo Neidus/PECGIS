@@ -65,6 +65,12 @@ public class CargarGeoJSON extends HttpServlet {
         sesion.setAttribute("zonasUsuario", zonas);
         System.out.println("zona " + zonas.get(0).getZona());
         
+        /*
+        Aqui tenemos que colocar el codigo necesario para el cálculo de la peligrosidad
+        calculada y su devolucion. Para ello usaremos tanto la id de la ruta como de 
+        todas las zonas que tenemos justo arriba
+        */
+        
         res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp")); //Volvemos a la web
     }
 
