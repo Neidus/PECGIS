@@ -8,7 +8,12 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +24,10 @@ public class Zona {
     private Connection conexion;
     private Statement sentencia;
     private ResultSet resultado;
+    
+    private String id;
+    private String peligrosidad;
+    private String zona;
     
     public void abrirConexion() {
         try
@@ -77,10 +86,10 @@ public class Zona {
             
             String[] coordenadas = partido[i].substring(1).split(",");
             geoJson += "[" + coordenadas[1].substring(6) + ", ";
-            geoJson += coordenadas[0].substring(6) + "]\n,";
+            geoJson += coordenadas[0].substring(5) + "]\n, ";
         }
         geoJson = geoJson.substring(0, geoJson.length()-1) + "]]}";
-        
+        System.out.println("geoJson adaptado para la bbdd:" + geoJson);
         return geoJson;
     }
     
@@ -96,7 +105,31 @@ public class Zona {
         }       
     }
     
-    
+    public List<Zona> getListaZonas() {
+      
+        List<Zona> lista = new ArrayList<Zona>();
+        try {
+            
+            lista.clear();
+            sentencia = conexion.createStatement();
+            resultado = sentencia.executeQuery("SELECT gid_serial,peligrosidad,ST_AsGeoJSON(geom) FROM zonas;");
+            
+            
+            
+            while (resultado.next()) { //Guardamos los ids valores de peligrosidad y geojson de las zonas en una lista
+                Zona aux = new Zona();
+                aux.setId(resultado.getString(1));
+                aux.setPeligrosidad(resultado.getString(2));
+                aux.setZona("[" + resultado.getString(3) + "]");
+                lista.add(aux);
+            }
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Ruta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
    
     
     public void cerrarConexion() {
@@ -104,4 +137,30 @@ public class Zona {
             conexion.close();
         } catch (Exception e){}
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getPeligrosidad() {
+        return peligrosidad;
+    }
+
+    public void setPeligrosidad(String peligrosidad) {
+        this.peligrosidad = peligrosidad;
+    }
+
+    public String getZona() {
+        return zona;
+    }
+
+    public void setZona(String zona) {
+        this.zona = zona;
+    }
+    
+    
 }

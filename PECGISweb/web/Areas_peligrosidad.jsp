@@ -170,7 +170,7 @@ function createInput(label, container) {
             document.getElementById("peligrosidades").value = document.getElementById("peligrosidades").value +"," + area_texto.value;
         }
           
-          //alert(document.getElementById("zonas").value);  //Establecemos el conjunto de puntos a un input de un formulario.
+          alert(document.getElementById("zonas").value);  //Establecemos el conjunto de puntos a un input de un formulario.
           //alert(document.getElementById("peligrosidades").value); 
 
         map.closePopup(); //Y cerramos el popup. 

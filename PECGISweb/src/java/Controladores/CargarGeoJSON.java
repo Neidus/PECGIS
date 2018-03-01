@@ -5,7 +5,9 @@
  */
 package Controladores;
 
+import Modelo.Zona;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpSession;
 public class CargarGeoJSON extends HttpServlet {
     
     Modelo.Ruta r;
+    Modelo.Zona z;
     
 
     /*
@@ -29,7 +32,9 @@ public class CargarGeoJSON extends HttpServlet {
     public void init(ServletConfig cfg) throws ServletException
     {
        r = new Modelo.Ruta();
+       z = new Modelo.Zona();
        r.abrirConexion();
+       z.abrirConexion();
     }
 
     /*
@@ -39,11 +44,28 @@ public class CargarGeoJSON extends HttpServlet {
     HttpServletResponse res) throws ServletException, IOException
     {
         HttpSession sesion = req.getSession();
-        String idRuta = req.getParameter("rutasDisponibles"); 
-        System.out.print(idRuta);
-        sesion.setAttribute("rutas", r.getRuta(idRuta));
-        System.out.println("Ruta: " + r.getRuta(idRuta));
-        res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp"));
+        
+        //Esta parte carga la ruta elegida por el usuario
+        
+        String idRuta = req.getParameter("rutasDisponibles");  //obtenemos el id marcado de forma oculta por el usuario
+        //System.out.print(idRuta);
+        sesion.setAttribute("rutas", r.getRuta(idRuta)); //Obtenemos la ruta segun el id y la devolveremos a la pagina como atributo de sesion
+        //System.out.println("Ruta: " + r.getRuta(idRuta));
+        
+        /*
+        Esta parte obtiene el listado de zonas para que la pagina las cargue por si misma.
+        El listado contiene para cada zona de la lista:
+        - el id por si necesitamos debido a cualquier motivo no contemplado usarla para algo
+        - el nivel de peligrosidad por si queremos mostrarlo de algun modo en la pagina
+            para cada zona cuando la seleccionamos con el raton.
+        - la ruta en formato geojson. La pagina cargara todas las rutas en el mapa.
+        */
+        
+        List<Zona> zonas = z.getListaZonas();
+        sesion.setAttribute("zonasUsuario", zonas);
+        System.out.println("zona " + zonas.get(0).getZona());
+        
+        res.sendRedirect(res.encodeRedirectURL("/PECGISweb/mapageojson.jsp")); //Volvemos a la web
     }
 
     /*
@@ -51,7 +73,8 @@ public class CargarGeoJSON extends HttpServlet {
     */
     public void destroy()
     {
-        System.out.println("Estoy en destroy");
+        r.cerrarConexion();
+        z.cerrarConexion();
     }
 
 }

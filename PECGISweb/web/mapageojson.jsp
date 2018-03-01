@@ -39,9 +39,8 @@
             </c:forEach>
         </select>
         
-        <button id="button" >Cargar Ruta Seleccionada</button>
+        <button id="button" >Cargar Ruta Seleccionada y Zonas del Mapa</button>
     </form>
-    
     
     
     <script> //Aqui va la funcionalidad del mapa
@@ -54,6 +53,8 @@
 			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(mymap);
+        //var myzona = [{"type":"Polygon","coordinates":[[[9.95361328125,7.69240553526457],[7.36083984375,5.1286490684888],[9.6240234375,4.83866361297513]]]}]
+   
     </script>
     
     <% if ((session.getAttribute("usuario")!=null)&&(session.getAttribute("usuario").equals("admin"))) {%> 
@@ -68,6 +69,24 @@
         L.geoJSON(rutaUsuario).addTo(mymap);
     </script>
     <p>coordenadas <%= session.getAttribute("rutas") %></p>
+    <% } %>
+    
+    
+    
+    <% if (session.getAttribute("zonasUsuario")!=null) {%>
+    
+        
+        
+    
+    
+    
+    <c:forEach items="${zonasUsuario}" var="geoJsonZona">
+      <p>${geoJsonZona.zona}</p>  
+      <script>
+           var myzona = ${geoJsonZona.zona};
+           L.geoJSON(myzona).addTo(mymap);
+      </script>
+    </c:forEach>
     <% } %>
   </body>
 </html>
