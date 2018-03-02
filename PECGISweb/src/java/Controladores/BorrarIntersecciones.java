@@ -49,7 +49,7 @@ public class BorrarIntersecciones extends HttpServlet {
        
             return;
         }       
-        res.sendRedirect(res.encodeRedirectURL("/PECGISweb/calculopeligrosidad.jsp"));
+        res.sendRedirect(res.encodeRedirectURL("/PECGISweb/index.jsp"));
         
     }
 
