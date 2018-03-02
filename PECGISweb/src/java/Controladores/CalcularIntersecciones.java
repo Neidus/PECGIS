@@ -66,12 +66,20 @@ public class CalcularIntersecciones extends HttpServlet{
         
         //Preparacion para paso 3 mostramos lo obtenido:
         System.out.println("Datos de las INTERSECCIONES");
+        int constante= 60; // 60 km por hora 
+        double total = 0; // inicialización de total; 
         for (int i=0; i< listaIntersecciones.size(); i++) {
             System.out.println("Interseccion numero: " + (i+1));
             System.out.println("    Distancia (km) que coincide: " + Double.valueOf(listaIntersecciones.get(i).getDistancia()));
             System.out.println("    Nivel de peligrosidad: " + Integer.valueOf(listaIntersecciones.get(i).getPeligrosidad()));
-            
+            double horas = Double.valueOf(listaIntersecciones.get(i).getDistancia())/constante ; // tiempo que tardo en recorrer la zona 
+            double nivel = horas*Integer.valueOf(listaIntersecciones.get(i).getPeligrosidad()); // nivel de CHUNGUICIDAD
+            total = nivel + total; // total de peligrosidad
+            System.out.print("total: "+ total);
         }
+        
+       
+              
         
         /*
         Pasos a seguir:
