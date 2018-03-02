@@ -55,13 +55,13 @@ public class Intersecciones {
     /*
         Obtenemos una lista de intersecciones de una ruta de un usuario concreto
     */
-    public List<Intersecciones> getListaIntersecciones( String nombreUsuario, String ruta) {
+    public List<Intersecciones> getListaIntersecciones() {
         List<Intersecciones> lista = new ArrayList<Intersecciones>();
         try {
             
             lista.clear();
             sentencia = conexion.createStatement();
-            resultado = sentencia.executeQuery("SELECT ruta, zona, distancia, peligrosidad FROM intersecciones WHERE usuario='" + nombreUsuario +"' AND ruta='"+ruta+"';");
+            resultado = sentencia.executeQuery("SELECT ruta, zona, distancia, peligrosidad FROM intersecciones;");
             
             
             
