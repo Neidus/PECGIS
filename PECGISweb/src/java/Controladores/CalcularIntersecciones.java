@@ -78,7 +78,8 @@ public class CalcularIntersecciones extends HttpServlet{
             System.out.print("total: "+ total);
         }
         
-       
+        sesion.setAttribute("listaIntersecciones", listaIntersecciones); //Preparamos las intersecciones para pasarlas al jsp
+        sesion.setAttribute("peligrosidadTotal", total); //Preparamos el peligro total para el jsp.
               
         
         /*

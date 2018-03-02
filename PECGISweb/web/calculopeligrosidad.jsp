@@ -16,7 +16,7 @@
     <body>
     
         <h3> </h3>  
-    <h3>Calculo Intersecciones</h3>
+    <h3>Calculo de Peligrosidad de Rutas</h3>
 
     <form action="/PECGISweb/CalcularIntersecciones" method="POST">
         <!--Cargamos los nombres de las rutas del usuario y de forma oculta los ids 
@@ -27,22 +27,27 @@
                 <option value="${ruta.id}"><c:out value="${ruta.nombre}" /></option>
             </c:forEach>
         </select>
-        
-        <button id="button" >Cargar Intersecciones</button>
+        <p></p>
+        <button id="button" >Calcular Peligrosidad de la Ruta</button>
     </form>
     
+    <h1></h1>
     
-  
+        <% if (session.getAttribute("peligrosidadTotal")!=null) {%>
+        <h3>Peligrosidad total: <%= session.getAttribute("peligrosidadTotal") %></h3>
         
-        <h3> </h3>    
-        <h3>Calculo Peligrosidad</h3>    
-        <button id="button" >Calcular peligrosidad</button>
+        <% } %>
         
-        <h3> </h3>  
-        <h3>Restablecer Intersecciones</h3>
-        <form action="/PECGISweb/BorrarIntersecciones" method="POST">     
-        <button id="button" >Restablecer Intersecciones</button>
-    </form>
+        <% if (session.getAttribute("listaIntersecciones")!=null) {%>
+        <h3>Información de zonas por donde se ha realizado la ruta:</h3>
+        <% int aux = 1; %>
+            <c:forEach items="${listaIntersecciones}" var="interseccion">
+                <h4>Zona numero <%= aux %>:</h4>
+                <h4>Nivel de peligrosidad de la ruta: ${interseccion.peligrosidad} </h4>
+                <h4>Kilometros de recorrido de la zona: ${interseccion.distancia} km</h4>
+                <% aux++; %>
+            </c:forEach>
+        <% } %>
         
         
         
