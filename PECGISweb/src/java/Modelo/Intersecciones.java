@@ -81,7 +81,15 @@ public class Intersecciones {
         return lista;
     }     
      
-     
+    /*Borrar intersecciones --  Todavia no esta implementado*/ 
+
+    public void borrarIntersecciones (String usuario){
+    try { 
+        sentencia.execute("DELETE FROM intersecciones WHERE usuario='"+ usuario + ";");
+        } catch (Exception er) { 
+             JOptionPane.showMessageDialog(null, "Lo sentimos su operación solicitada no se pudo realizar debido a un error de " + er); 
+        }       
+    }     
      
    public void cerrarConexion() {
         try {

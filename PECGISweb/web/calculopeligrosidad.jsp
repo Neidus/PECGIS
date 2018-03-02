@@ -39,7 +39,10 @@
         
         <h3> </h3>  
         <h3>Restablecer Intersecciones</h3>
+        <form action="/PECGISweb/BorrarIntersecciones" method="POST">     
         <button id="button" >Restablecer Intersecciones</button>
+    </form>
+        
         
         
     </body>

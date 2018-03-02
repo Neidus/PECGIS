@@ -25,7 +25,6 @@ public class CalcularIntersecciones {
     Modelo.Zona z;
     Modelo.Intersecciones i;
     
-
     /*
         Se ejecuta solo la primera vez que llamamos al servlet. 
         Establece la conexion con la BBDD
@@ -40,7 +39,7 @@ public class CalcularIntersecciones {
        i.abrirConexion();
     }
     
-       /*
+    /*
         Se ejecuta tras el init cada vez que lo llamamos.
     */
     public void service(HttpServletRequest req,
