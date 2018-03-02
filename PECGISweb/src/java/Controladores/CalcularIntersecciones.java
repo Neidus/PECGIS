@@ -55,18 +55,45 @@ public class CalcularIntersecciones extends HttpServlet{
         sesion.setAttribute("rutas", r.getRuta(idRuta)); //Obtenemos la ruta segun el id y la devolveremos a la pagina como atributo de sesion
         //System.out.println("Ruta: " + r.getRuta(idRuta));
         
+        
+        //AQUI PONEMOS TODO EL CALCULO DE LAS INTERSECCIONES Y PELIGROSIDAD
+        
         /*
-        Esta parte obtiene el listado de zonas para que la pagina las cargue por si misma.
-        El listado contiene para cada zona de la lista:
-        - el id por si necesitamos debido a cualquier motivo no contemplado usarla para algo
-        - el nivel de peligrosidad por si queremos mostrarlo de algun modo en la pagina
-            para cada zona cuando la seleccionamos con el raton.
-        - la ruta en formato geojson. La pagina cargara todas las rutas en el mapa.
+        Pasos a seguir:
+        
+        1- Obtener la lista de ids de las zonas que tenemos en la bbdd.
+        
+        Consulta: SELECT gid_serial from zonas;
+        
+        
+        2- Hacemos de forma iterativa la consulta de interseccion entre la id
+            de nuestra ruta seleccionada y cada id de las zonas antes conseguidas.
+            Nos interes obtener la distancia en kilometros que intersecciona la ruta
+            con una zona y el nivel de peligrosidad de dicha interseccion.
+            Guardamos estos 2 datos en una lista.
+        
+            Consulta:   SELECT ST_Length_Spheroid(ST_Intersection(rutas.geom, zonas.geom),
+                                'SPHEROID["WGS 84",6378137,298.257223563]')/1000, zonas.peligrosidad
+                        FROM rutas, zonas
+                        WHERE rutas.gid_serial=3 and zonas.gid_serial=6;
+        
+       3- Aplicamos la formula de calculo de peligrosidad con lo obtenido de paso 2.
+            Aplicariamos de forma iterativa por cada dato obtenido en paso 2.
+            Ya que es tiempo * nivel de peligrosidad de la zona, nos inventamos una velocidad
+            y con la distancia que tenemos ya sacamos un tiempo.
+        
+        
         */
+        
+        /*
+        
         
         List<Intersecciones> intersecciones = i.getListaIntersecciones();
         sesion.setAttribute("interseccionesUsuario", intersecciones);
         System.out.println("interseccion " + intersecciones.get(0).getNombrezona());
+        */
+        
+        
         
         /*
         Aqui tenemos que colocar el codigo necesario para el cálculo de la peligrosidad
