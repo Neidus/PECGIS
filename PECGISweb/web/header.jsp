@@ -17,8 +17,9 @@
                             <form action="/PECGISweb/Logout" method="POST">
 				<ul class="container">
                                         <li><a href="Unificacion.jsp">Inicio</a></li>
-					<li><a href="insertar_datos.jsp">registrar recorrido</a></li>
-					<li><a href="mapageojson.jsp">cargar recorrido</a></li>
+                                        <li><a href="insertar_datos.jsp">Registrar Recorrido</a></li>
+					<li><a href="mapageojson.jsp">Cargar Recorrido</a></li>
+                                        <li><a href="calculopeligrosidad.jsp">Zonas Peligrosas</a></li>
                                          <li><button id="botonLogout" >Desconectarse</button></li>
 					<!--<li><a href="#contact"></a></li>-->
 				</ul>
