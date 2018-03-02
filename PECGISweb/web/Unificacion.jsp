@@ -2,37 +2,13 @@
 
 <html>
 	<head>
-		<title>Pagina de chungicidad</title>
+		<title>Inicio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="diseño/assets/css/main.css" />
-<script> // Script para controlar las sesiones
-                    <% if (session.getAttribute("usuario")==null) {%>
-                        function redireccionar() 
-                    {
-                        location.href="/PECGISweb/index.jsp"; //Redireccionamos al inicio si no estamos conectados a ningun usuario
-                    } 
-                    setTimeout ("redireccionar()", 0);
-                    <% }%>
-   </script>
-		
+                <%@include file="./header.jsp"%>
 	</head>
 	<body>
-
-		<!-- Nav -->
-			<nav id="nav">
-                            <form action="/PECGISweb/Logout" method="POST">
-				<ul class="container">
-                                        <li><a href="Unificacion.jsp">Inicio</a></li>
-					<li><a href="insertar_datos.jsp">registrar recorrido</a></li>
-					<li><a href="mapageojson.jsp">cargar recorrido</a></li>
-                                         <li><button id="botonLogout" >Desconectarse</button></li>
-					<!--<li><a href="#contact"></a></li>-->
-				</ul>
-     
-                            </form>	
-			</nav>
-
 		<!-- Home -->
 			<div class="wrapper style1 first">
 				<article class="container" id="top">

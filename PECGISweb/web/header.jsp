@@ -36,9 +36,12 @@
                     setTimeout ("redireccionar()", 0);
                     <% }%>
    </script>
-   <div class="wrapper first">
-
+   <h1></h1>
     </head>
+    
     <body>
+        
+        
+        
     </body>
 </html>

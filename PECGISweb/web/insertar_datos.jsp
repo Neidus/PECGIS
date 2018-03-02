@@ -2,29 +2,18 @@
 
 <html>
 	<head>
-		<title>Pagina de chungicidad</title>
+		<title>Registrar Recorrido</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="diseño/assets/css/main.css" />
-<script> // Script para controlar las sesiones
-                    <% if (session.getAttribute("usuario")==null) {%>
-                        function redireccionar() 
-                    {
-                        location.href="/PECGISweb/index.jsp"; //Redireccionamos al inicio si no estamos conectados a ningun usuario
-                    } 
-                    setTimeout ("redireccionar()", 0);
-                    <% }%>
- </script>
+                <%@include file="./header.jsp"%>
  
      <!-- Me temos el estilo de leafleat. Es decir métene,os la libreria de leaflet online -->
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
-
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 
 
@@ -42,23 +31,8 @@
 	</head>        
 	<body>
 
-		<!-- Nav -->
-			<nav id="nav">
-                            <form action="/PECGISweb/Logout" method="POST">
-				<ul class="container">
-                                        <li><a href="Unificacion.jsp">Inicio</a></li>
-					<li><a href="route_sin_osrm.jsp">registrar recorrido</a></li>
-					<li><a href="mapageojson.jsp">cargar recorrido</a></li>
-                                         <li><button id="botonLogout" >Desconectarse</button></li>
-					<!--<li><a href="#contact"></a></li>-->
-				</ul>
-     
-                            </form>	
-			</nav>
-
 		<!-- Home -->
-			<div class="wrapper style1 first">
-                            <div id="mapid" style="width: 1000px; height: 1000px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
+			<div id="mapid" style="width: 800px; height: 600px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
 				<script>
 
                                         var mymap = L.map('mapid').setView([57.74, 11.94], 13);  // Nos creamos la variable map, para establecer el mapa.
