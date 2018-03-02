@@ -42,9 +42,9 @@
         <h3>Información de zonas por donde se ha realizado la ruta:</h3>
         <% int aux = 1; %>
             <c:forEach items="${listaIntersecciones}" var="interseccion">
-                <h4>Zona numero <%= aux %>:</h4>
+                <h4>Zona número <%= aux %>:</h4>
                 <h4>Nivel de peligrosidad de la ruta: ${interseccion.peligrosidad} </h4>
-                <h4>Kilometros de recorrido de la zona: ${interseccion.distancia} km</h4>
+                <h4>Kilómetros de recorrido de la zona: ${interseccion.distancia} km</h4>
                 <% aux++; %>
             </c:forEach>
         <% } %>
