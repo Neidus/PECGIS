@@ -13,8 +13,12 @@
         <%@include file="./header.jsp" %>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Calculo Peligrosidad</h1>
+
         
+        <button id="button" >Cargar Intersecciones</button>
+        <button id="button" >Calcular peligrosidad</button>
+        <button id="button" >Restablecer Intersecciones</button>
         
         
     </body>

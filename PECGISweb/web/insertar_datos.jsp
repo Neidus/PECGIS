@@ -26,10 +26,9 @@
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     
-
-		
 	</head>        
-	<body>
+
+        <body>
 
 		<!-- Home -->
 			<div id="mapid" style="width: 800px; height: 600px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
