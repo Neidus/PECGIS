@@ -29,15 +29,14 @@ and open the template in the editor.
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.2.3/leaflet.draw.css" />   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.2.3/leaflet.draw.js"></script>
-   
+   <%@include file="./header.jsp"%>
 
     </head>    
     <body> 
-        <div>Areas_de_Peligrosidad</div>
-
+        
         <!--  **** Parte adri: Utilizano leafleat.draw, para dibujar areas con leaflet -->
 
-        <div id="map" style="width: 1000px; height: 1000px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
+        <div id="map" style="width: 800px; height: 600px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
 
 
 <script>

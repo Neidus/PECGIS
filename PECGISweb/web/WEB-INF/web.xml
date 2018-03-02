@@ -40,6 +40,14 @@
         <servlet-name>CargarNombresRutas</servlet-name>
         <servlet-class>Controladores.CargarNombresRutas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CalcularIntersecciones</servlet-name>
+        <servlet-class>Controladores.CalcularBorrarIntersecciones</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BorrarIntersecciones</servlet-name>
+        <servlet-class>Controladores.BorrarIntersecciones</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CargarGeoJSON</servlet-name>
         <url-pattern>/CargarGeoJSON</url-pattern>
@@ -80,6 +88,14 @@
         <servlet-name>CargarNombresRutas</servlet-name>
         <url-pattern>/CargarNombresRutas</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrarIntersecciones</servlet-name>
+        <url-pattern>/BorrarIntersecciones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CalcularIntersecciones</servlet-name>
+        <url-pattern>/CalcularIntersecciones</url-pattern>
+    </servlet-mapping>       
     <session-config>
         <session-timeout>
             30
