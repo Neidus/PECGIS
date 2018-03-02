@@ -49,14 +49,29 @@ public class CalcularIntersecciones extends HttpServlet{
         HttpSession sesion = req.getSession();
         
         //Esta parte carga la ruta elegida por el usuario
-        
+        System.out.print("AQUI EMPIEZO EL SERVLET");
         String idRuta = req.getParameter("rutasDisponibles");  //obtenemos el id marcado de forma oculta por el usuario
         //System.out.print(idRuta);
-        sesion.setAttribute("rutas", r.getRuta(idRuta)); //Obtenemos la ruta segun el id y la devolveremos a la pagina como atributo de sesion
+        //sesion.setAttribute("rutas", r.getRuta(idRuta)); //Obtenemos la ruta segun el id y la devolveremos a la pagina como atributo de sesion
         //System.out.println("Ruta: " + r.getRuta(idRuta));
         
         
         //AQUI PONEMOS TODO EL CALCULO DE LAS INTERSECCIONES Y PELIGROSIDAD
+        
+        //Primer paso
+        List<String> idsZonas = z.getListaIds();
+        //Segundo paso
+        
+        List<Intersecciones> listaIntersecciones = i.getListaIntersecciones(idRuta, idsZonas);
+        
+        //Preparacion para paso 3 mostramos lo obtenido:
+        System.out.println("Datos de las INTERSECCIONES");
+        for (int i=0; i< listaIntersecciones.size(); i++) {
+            System.out.println("Interseccion numero: " + (i+1));
+            System.out.println("    Distancia (km) que coincide: " + Double.valueOf(listaIntersecciones.get(i).getDistancia()));
+            System.out.println("    Nivel de peligrosidad: " + Integer.valueOf(listaIntersecciones.get(i).getPeligrosidad()));
+            
+        }
         
         /*
         Pasos a seguir:

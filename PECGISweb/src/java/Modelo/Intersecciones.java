@@ -52,10 +52,39 @@ public class Intersecciones {
         }       
     }
     
+    public List<Intersecciones> getListaIntersecciones(String idRuta, List<String> idZonas) {
+        List<Intersecciones> lista = new ArrayList<Intersecciones>();
+        try {
+            
+            lista.clear();
+            sentencia = conexion.createStatement();
+            
+            for (int i=0; i<idZonas.size(); i++) {
+                resultado = sentencia.executeQuery("SELECT ST_Length_Spheroid(ST_Intersection(rutas.geom, ST_MakeValid(zonas.geom)),\n" +
+                                                    "'SPHEROID[\"WGS 84\",6378137,298.257223563]')/1000, zonas.peligrosidad\n" +
+                                                    "FROM rutas, zonas\n" +
+                                                    "WHERE rutas.gid_serial=" + idRuta + " and zonas.gid_serial=" + idZonas.get(i) + ";");
+
+                 if (resultado.next()) { //Guardamos las distancias y peligrosidades en una lista
+                    Intersecciones aux = new Intersecciones();
+                    aux.setDistancia(resultado.getString(1));
+                    aux.setPeligrosidad(resultado.getString(2));
+                    lista.add(aux);
+                }
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Intersecciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;
+    }
+    
+    
     /*
         Obtenemos una lista de intersecciones de una ruta de un usuario concreto
     */
-    public List<Intersecciones> getListaIntersecciones() {
+    public List<Intersecciones> getListaIntersecciones2() {
         List<Intersecciones> lista = new ArrayList<Intersecciones>();
         try {
             
@@ -79,7 +108,7 @@ public class Intersecciones {
             Logger.getLogger(Ruta.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
-    }     
+    }  
      
     /*Borrar intersecciones --  Todavia no esta implementado*/ 
 

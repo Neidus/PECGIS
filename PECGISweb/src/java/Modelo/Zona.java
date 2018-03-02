@@ -130,6 +130,21 @@ public class Zona {
         }
         return lista;
     }
+    
+    public List<String> getListaIds() {
+        List<String> listaIds = new ArrayList<String>();
+        try {
+            
+            sentencia = conexion.createStatement();
+            resultado = sentencia.executeQuery("SELECT gid_serial from zonas;");
+            while (resultado.next()) {
+                listaIds.add(resultado.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Zona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return listaIds; 
+    }
    
     
     public void cerrarConexion() {

@@ -42,7 +42,7 @@
     </servlet>
     <servlet>
         <servlet-name>CalcularIntersecciones</servlet-name>
-        <servlet-class>Controladores.CalcularBorrarIntersecciones</servlet-class>
+        <servlet-class>Controladores.CalcularIntersecciones</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BorrarIntersecciones</servlet-name>
