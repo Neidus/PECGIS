@@ -53,9 +53,8 @@ public class CalcularIntersecciones extends HttpServlet{
         String idRuta = req.getParameter("rutasDisponibles");  //obtenemos el id marcado de forma oculta por el usuario
         //System.out.print(idRuta);
         //sesion.setAttribute("rutas", r.getRuta(idRuta)); //Obtenemos la ruta segun el id y la devolveremos a la pagina como atributo de sesion
-        //System.out.println("Ruta: " + r.getRuta(idRuta));
-        
-        
+        //System.out.println("Ruta: " + r.getRuta(idRuta));     
+       
         //AQUI PONEMOS TODO EL CALCULO DE LAS INTERSECCIONES Y PELIGROSIDAD
         
         //Primer paso
@@ -80,16 +79,13 @@ public class CalcularIntersecciones extends HttpServlet{
         
         sesion.setAttribute("listaIntersecciones", listaIntersecciones); //Preparamos las intersecciones para pasarlas al jsp
         sesion.setAttribute("peligrosidadTotal", total); //Preparamos el peligro total para el jsp.
-              
-        
+       
         /*
         Pasos a seguir:
         
-        1- Obtener la lista de ids de las zonas que tenemos en la bbdd.
-        
+        1- Obtener la lista de ids de las zonas que tenemos en la bbdd.     
         Consulta: SELECT gid_serial from zonas;
-        
-        
+               
         2- Hacemos de forma iterativa la consulta de interseccion entre la id
             de nuestra ruta seleccionada y cada id de las zonas antes conseguidas.
             Nos interes obtener la distancia en kilometros que intersecciona la ruta
@@ -104,9 +100,7 @@ public class CalcularIntersecciones extends HttpServlet{
        3- Aplicamos la formula de calculo de peligrosidad con lo obtenido de paso 2.
             Aplicariamos de forma iterativa por cada dato obtenido en paso 2.
             Ya que es tiempo * nivel de peligrosidad de la zona, nos inventamos una velocidad
-            y con la distancia que tenemos ya sacamos un tiempo.
-        
-        
+            y con la distancia que tenemos ya sacamos un tiempo.        
         */
         
         /*

@@ -24,11 +24,10 @@
   </head>
   <body>
      
-   
-    <div id="mapid" style="width: 800px; height: 600px;"></div>
-   
+    <h2> </h2>
+    <div id="mapid" style="width: 1400px; height: 600px;"></div>  
         
-  
+    <h2> </h2>
     <form action="/PECGISweb/CargarGeoJSON" method="POST">
         <!--Cargamos los nombres de las rutas del usuario y de forma oculta los ids 
         para poder cargarlos cuando pulsemos el boton -->
@@ -38,13 +37,13 @@
                 <option value="${ruta.id}"><c:out value="${ruta.nombre}" /></option>
             </c:forEach>
         </select>
-        
+        <h2> </h2>
         <button id="button" >Cargar Ruta Seleccionada y Zonas del Mapa</button>
+        <h2> </h2>
     </form>
     
-    
     <script> //Aqui va la funcionalidad del mapa
-	    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+	    var mymap = L.map('mapid').setView([40.513149, -3.349462], 8);
 	    
 	    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
@@ -71,9 +70,7 @@
         L.geoJSON(rutaUsuario).addTo(mymap);
     </script>
     <p>coordenadas <%= session.getAttribute("rutas") %></p>
-    <% } %>
-    
-    
+    <% } %>    
     
     <% if (session.getAttribute("zonasUsuario")!=null) {%>
     

@@ -61,16 +61,6 @@ public class InsertarZona extends HttpServlet {
             z.insertZona(z.JsonToGeoJson(listaZonas[i]), listaPeligrosidad[i]);
         }
         
-        
-        
-         /*
-        
-        */
-        
-        
-        
-        
-        
         res.sendRedirect(res.encodeRedirectURL("/PECGISweb/Areas_peligrosidad.jsp"));
         
     }

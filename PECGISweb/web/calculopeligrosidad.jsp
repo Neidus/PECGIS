@@ -3,7 +3,6 @@
     Created on : 02-mar-2018, 7:23:34
     Author     : fernando.garcia
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,13 +28,11 @@
         </select>
         <p></p>
         <button id="button" >Calcular Peligrosidad de la Ruta</button>
-    </form>
-    
-    <h1></h1>
-    
+    </form>   
+    <h1></h1>    
         <% if (session.getAttribute("peligrosidadTotal")!=null) {%>
         <h3>Peligrosidad total: <%= session.getAttribute("peligrosidadTotal") %></h3>
-        
+        <h3> </h3>
         <% } %>
         
         <% if (session.getAttribute("listaIntersecciones")!=null) {%>
@@ -43,13 +40,12 @@
         <% int aux = 1; %>
             <c:forEach items="${listaIntersecciones}" var="interseccion">
                 <h4>Zona número <%= aux %>:</h4>
-                <h4>Nivel de peligrosidad de la ruta: ${interseccion.peligrosidad} </h4>
+                <h4>Nivel de peligrosidad de la zona: ${interseccion.peligrosidad} </h4>
                 <h4>Kilómetros de recorrido de la zona: ${interseccion.distancia} km</h4>
+                <h4> </h4>
                 <% aux++; %>
             </c:forEach>
         <% } %>
-        
-        
         
     </body>
 </html>

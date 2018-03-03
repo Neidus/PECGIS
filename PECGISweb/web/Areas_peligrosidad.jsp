@@ -36,16 +36,16 @@ and open the template in the editor.
         
         <!--  **** Parte adri: Utilizano leafleat.draw, para dibujar areas con leaflet -->
 
-        <div id="map" style="width: 800px; height: 600px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
+        <div id="map" style="width: 1400px; height: 600px;"></div> <!-- Dentro de esta sección establecemos el mapa -->
 
 
 <script>
 
  // center of the map
-var center = [57.74, 11.94];
+var center = [40.513149, -3.349462];
 
 
-var map = L.map('map').setView(center, 13); //Creamos el mapa, y establecemos el centro.
+var map = L.map('map').setView(center, 8); //Creamos el mapa, y establecemos el centro.
 
 //Creamos el layer.
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -61,7 +61,6 @@ var editableLayers = new L.FeatureGroup();
 map.addLayer(editableLayers);
 
 //Implementamos el plugin.
-
 var drawPluginOptions = {
   position: 'topright',
   draw: {
@@ -74,8 +73,7 @@ var drawPluginOptions = {
       shapeOptions: {
         color: '#97009c' //Color por defecto para crearlo.
       }
-    },
-   
+    },  
     polyline: false,
     circle: false, //Desabilitamos los demás elementos.
     rectangle: false,
@@ -86,7 +84,6 @@ var drawPluginOptions = {
     remove: false //Opción para borrar los objetos, desabiliada.
   }
 };
-
 
 // Añadimos el pluguín a un Control, para dibujar las Areas.
 var drawControl = new L.Control.Draw(drawPluginOptions);
@@ -119,59 +116,45 @@ function createButton(label, container) {
     return btn; //Nos devuelve el objeto botón.
 }
 
-
 function createInput(label, container) {   
     
-    var area = L.DomUtil.create('input', '', container);  //Creamos el objeto, y lo metemos en el contededor.
-    
-    area.setAttribute('type', 'input');  //El objeto va a ser un area.
-    
+    var area = L.DomUtil.create('input', '', container);  //Creamos el objeto, y lo metemos en el contededor.    
+    area.setAttribute('type', 'input');  //El objeto va a ser un area.    
     area.innerHTML = label;  //Establecemos el texto.
     
       return area;
   }
-
    if (type === 'polygon') {
-    layer.setStyle({'color': getRandomColor_in() }); //Cuando el layer, del evento, sea un poligono (Area) cambiamos dentro de su estilo, el atributo color, y establecemos el color generado.
+    layer.setStyle({'color': getRandomColor_in() });//Cuando el layer, del evento, sea un poligono(Area)cambiamos dentro de su estilo, 
+                                                    //el atributo color, y establecemos el color generado.
   }
 
   editableLayers.addLayer(layer); //Y lo establecemos dentro de nuestro array de layers.
-  
-
+ 
     var container = L.DomUtil.create('div'),  //Nos creamos un contenedor, (div en html).
         
-      area_texto = createInput('Escribe la peligrosidad (0 - 5)', container),   
-        
+      area_texto = createInput('Escribe la peligrosidad (0 - 5)', container),         
       boton = createButton('Cargar peligrosidad del Area', container);
      
-      L.popup()
-        
+      L.popup()        
         .setContent(container)  //Cambiamos el contedor, al crado, para poner en el pop up, el contedor con los boton y el area, para meter la peligrosidad..
-
-        .setLatLng(layer.getCenter())  //Lo mostramos en el centro del mapa.
-        
+        .setLatLng(layer.getCenter())  //Lo mostramos en el centro del mapa.        
         .openOn(map); 
-        
-        
+                
         L.DomEvent.on(boton, 'click', function() {  //Cuando hacemos click al boton cogemos los datos.
         
         if (document.getElementById("zonas").value === "") {
-            document.getElementById("zonas").value =  JSON.stringify(layer.getLatLngs());  
-            
+            document.getElementById("zonas").value =  JSON.stringify(layer.getLatLngs());     
         } else {
             document.getElementById("zonas").value = document.getElementById("zonas").value +"," + JSON.stringify(layer.getLatLngs());  
-        }
-          
-
+        }         
         if (document.getElementById("peligrosidades").value === "") {
             document.getElementById("peligrosidades").value = area_texto.value;
         } else {
             document.getElementById("peligrosidades").value = document.getElementById("peligrosidades").value +"," + area_texto.value;
-        }
-          
+        }          
           alert(document.getElementById("zonas").value);  //Establecemos el conjunto de puntos a un input de un formulario.
           //alert(document.getElementById("peligrosidades").value); 
-
         map.closePopup(); //Y cerramos el popup. 
     });
 
@@ -190,6 +173,7 @@ function createInput(label, container) {
     <input name= "zonas" id="zonas" type="hidden" >
     <!-- guardara los niveles de peligrosidad introducidos para cada zona -->
     <input name= "peligrosidades" id="peligrosidades" type="hidden" >
+    <h2> </h2>
     <button>Insertar las zonas</button>
 </form>
     </body>
